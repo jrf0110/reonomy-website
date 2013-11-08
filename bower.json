@@ -1,12 +1,10 @@
 {
-  "name": "jquery-say-page",
+  "name": "Reonomy website",
   "version": "1.0.0",
   "authors": [
     "John Fawcett <jrf0110@gmail.com>"
   ],
-  "description": "Webpage for jquery.say plugin",
   "license": "MIT",
-  "homepage": "http://jquery-say.j0.hn",
   "private": true,
   "ignore": [
     "**/.*",
@@ -16,7 +14,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-say": "~1.0.1",
     "jquery": "~2.0.3",
     "bootstrap": "~3.0.2"
   }
