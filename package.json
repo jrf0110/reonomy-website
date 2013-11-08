@@ -14,5 +14,19 @@
     "grunt-contrib-jshint": "~0.7.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-less": "~0.8.1"
+  },
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.1",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jrf0110/reonomy-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jrf0110/reonomy-website/issues"
   }
 }
