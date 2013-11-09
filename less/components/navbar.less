@@ -2,13 +2,62 @@
 // Navbar //
 ////////////
 
+// Navbar height is dictated by nav padding
+@navbar-height:         75px;
+@navbar-bg-color:       @gray-dark;
+@navbar-color:          #fff;
+@navbar-font-family:    'Soho Gothic';
+
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 75px;
-  background: @gray-dark;
-  z-index: @navbar-zindex;
+  position:       fixed;
+  top:            0;
+  width:          100%;
+
+  // Specify min-height in case there are no nav anchors
+  min-height:     @navbar-height;
+
+  background:     @navbar-bg-color;
+  z-index:        @navbar-zindex;
+
+  font-family:    @navbar-font-family;
+  color:          @navbar-color;
 
   .drop-shadow( 0, 2px, 2px, 0.35 );
+}
+
+.navbar a {
+  color: @navbar-color;
+}
+
+.navbar-logo {
+  position: absolute;
+  float: left;
+  // Make the logo conform to navbar size
+  height: 100%;
+}
+
+.navbar .nav {
+  float: right;
+}
+
+.nav {
+  margin: 0;
+}
+
+.nav > li {
+  display: inline-block;
+}
+
+.nav a {
+  display: inline-block;
+  padding: (@navbar-height / 2) 20px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 0;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    background: lighten(@navbar-bg-color, 5%);
+  }
 }

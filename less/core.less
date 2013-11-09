@@ -8,6 +8,7 @@
 @import "../bower_components/less-elements/elements.less";
 
 @import "variables.less";
+@import "font-face.less";
 @import "components/navbar.less";
 
 html, body {
@@ -15,4 +16,17 @@ html, body {
   font-family:          @font-family-base;
   font-size:            @font-size-base;
   line-height:          @line-height-base;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  display: table;
+  width: @container-width;
+  margin: 0 auto;
 }
