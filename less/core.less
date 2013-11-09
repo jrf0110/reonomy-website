@@ -2,5 +2,17 @@
 // Core //
 //////////
 
+// Third-pary deps
+@import (less) "../bower_components/normalize-css/normalize.css";
+@import "../bower_components/semantic-grid/stylesheets/less/grid.less";
+@import "../bower_components/less-elements/elements.less";
+
 @import "variables.less";
-@import "bs-core.less";
+@import "components/navbar.less";
+
+html, body {
+  background-color:     @body-bg-color; 
+  font-family:          @font-family-base;
+  font-size:            @font-size-base;
+  line-height:          @line-height-base;
+}
