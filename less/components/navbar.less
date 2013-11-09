@@ -4,9 +4,16 @@
 
 // Navbar height is dictated by nav padding
 @navbar-height:         75px;
+@navbar-mobile-height:  32px;
 @navbar-bg-color:       @gray-dark;
 @navbar-color:          #fff;
 @navbar-font-family:    'Soho Gothic';
+
+// Make the padding-top a little greater than the bottom for
+// a more "balanced" feeel
+@anchor-padding-offset: 2px;
+@anchor-padding-top: (@navbar-height / 2) + @anchor-padding-offset;
+@anchor-padding-bottom: (@navbar-height / 2) - @anchor-padding-offset;
 
 .navbar {
   position:       fixed;
@@ -23,6 +30,7 @@
   color:          @navbar-color;
 
   .drop-shadow( 0, 2px, 2px, 0.35 );
+  .transition( 0.3s, ease-out );
 }
 
 .navbar a {
@@ -50,7 +58,7 @@
 
 .nav a {
   display: inline-block;
-  padding: (@navbar-height / 2) 20px;
+  padding: @anchor-padding-top 20px @anchor-padding-bottom;
   font-size: 12px;
   font-weight: bold;
   line-height: 0;
@@ -58,6 +66,20 @@
 
   &:hover {
     text-decoration: none;
-    background: lighten(@navbar-bg-color, 5%);
+    background: lighten( @navbar-bg-color, 5% );
+  }
+}
+
+// Make the navbar not so tall on mobile
+@media screen and (max-width: @breakpoint-mobile) {
+  @anchor-padding-top: (@navbar-mobile-height / 2) + @anchor-padding-offset;
+  @anchor-padding-bottom: (@navbar-mobile-height / 2) - @anchor-padding-offset;
+
+  .navbar {
+    min-height: @navbar-mobile-height;
+  }
+
+  .nav a {
+    padding: @anchor-padding-top 20px @anchor-padding-bottom;
   }
 }
