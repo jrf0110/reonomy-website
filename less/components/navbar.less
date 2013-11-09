@@ -23,6 +23,7 @@
   // Specify min-height in case there are no nav anchors
   min-height:     @navbar-height;
 
+
   background:     @navbar-bg-color;
   z-index:        @navbar-zindex;
 
@@ -30,7 +31,10 @@
   color:          @navbar-color;
 
   .drop-shadow( 0, 2px, 2px, 0.35 );
-  .transition( 0.3s, ease-out );
+}
+
+.navbar > .container {
+  overflow: hidden;
 }
 
 .navbar a {
@@ -46,6 +50,21 @@
 
 .navbar .nav {
   float: right;
+  .transition( 0.5s, ease-in-out );
+  .translate( 0, 0 );
+}
+
+.navbar.hide-demo-btn .nav {
+  .translate( 121px, 0 );
+}
+
+.navbar .btn-request-demo {
+  .transition( 0.5s, ease-in-out );
+  .opacity(1);
+}
+
+.navbar.hide-demo-btn .btn-request-demo {
+  .opacity(0);
 }
 
 .nav {
