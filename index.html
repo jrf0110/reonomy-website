@@ -7,6 +7,15 @@
     <meta name="description" content="Reonomy Description" />
 
     <link rel="stylesheet" href="/css/core.gen.css">
+
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/js/components/component.navbar.js"></script>
+    <script>
+      $(function(){
+        $('.navbar').reonomyNavbar().start();
+      });
+    </script>
   </head>
   <body>
     <!--<Navbar>-->
@@ -26,6 +35,7 @@
         </ul>
       </div>
     </div>
+    <div style="height: 10000px">ohai</div>
     <!--</Navbar>-->
   </body>
 </html>
