@@ -4,7 +4,7 @@
 
 // Navbar height is dictated by nav padding
 @navbar-height:         75px;
-@navbar-mobile-height:  32px;
+@navbar-mobile-height:  40px;
 @navbar-bg-color:       @gray-dark;
 @navbar-color:          #fff;
 
@@ -94,9 +94,16 @@ body {
   }
 }
 
+// Once the container relies on width: 100% add standard padding
+@media (max-width: @container-width) {
+  .navbar {
+    .standard-padding();
+  }
+}
+
 // Make the navbar not so tall on mobile
 // Adjust breakpoint to account for nav items
-@media screen and (max-width: (@breakpoint-mobile + 100px)) {
+@media screen and (max-width: (@breakpoint-mobile + 212px)) {
   @anchor-padding-top: (@navbar-mobile-height / 2) + @anchor-padding-offset;
   @anchor-padding-bottom: (@navbar-mobile-height / 2) - @anchor-padding-offset;
 
@@ -154,7 +161,12 @@ body {
 
   .navbar .nav a {
     display: block;
-    padding: @anchor-padding-top 20px @anchor-padding-bottom;
+    padding: @anchor-padding-top (@gutter-width / 2) @anchor-padding-bottom;
     margin-right: 0 - (@gutter-width / 2);
+  }
+
+  // Don't worry about showing/hiding the demo btn on mobile
+  .navbar.hide-demo-btn .btn-request-demo {
+    .opacity(1);
   }
 }
