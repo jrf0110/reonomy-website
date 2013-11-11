@@ -1,0 +1,32 @@
+//////////////////
+// Text Rotator //
+//////////////////
+
+.text-rotator {
+  .reset-ul();
+  position: relative;
+}
+
+.text-rotator > li {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+
+  .transform( rotateX( 90deg ) );
+
+  .transition( 0.4s, ease-out );
+}
+
+.text-rotator > li.active {
+  // Hrmmm.. rendering issue
+  // position: relative;
+  opacity: 1;
+  .transform( rotateX( 0 ) );
+}
+
+.text-rotator > li.active + li {
+  .transform( rotateX( -90deg ) );
+}

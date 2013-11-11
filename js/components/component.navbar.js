@@ -29,6 +29,13 @@
 
     options = $.extend( {}, defaults, options );
 
+    // Register nav expansion handler
+    $this.find('.nav').click( function( e ){
+      // Ensure original target is the nav not `li` or `a`
+      if ( !$(e.currentTarget).hasClass('nav') ) return;
+      $this.find('.nav').toggleClass('collapsed');
+    });
+
     var navbar = {
       isShowing: false
 
@@ -55,7 +62,6 @@
       }
 
     , _listener: _.throttle( function( e ){
-        console.log("_listener", window.scrollY, options.showDemoAt, navbar.isShowing);
         if ( window.scrollY < options.showDemoAt ){
           if ( !navbar.isShowing ) return;
           navbar.hide();

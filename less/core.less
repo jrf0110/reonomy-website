@@ -8,13 +8,19 @@
 @import "../bower_components/less-elements/elements.less";
 
 @import "variables.less";
+@import "mixins.less";
 @import "font-face.less";
+
+// Components
 @import "components/navbar.less";
+@import "components/text-rotator.less";
+@import "components/hero-unit.less";
 
 html, body {
   background-color:     @body-bg-color; 
   font-family:          @font-family-base;
   font-size:            @font-size-base;
+  font-weight:          @font-weight-base;
   line-height:          @line-height-base;
 }
 
@@ -32,6 +38,7 @@ a {
 
 .container {
   display: table;
-  width: @container-width;
+  width: 100%;
+  max-width: @container-width;
   margin: 0 auto;
 }

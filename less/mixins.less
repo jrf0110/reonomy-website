@@ -1,0 +1,42 @@
+////////////
+// Mixins //
+////////////
+
+.reset-ul(){
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.font-awesome( @icon ){
+  content: @icon;
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.standard-padding(){
+  padding-left: @gutter-width / 2;
+  padding-right: @gutter-width / 2;
+}
+
+.transition-property( @property ){
+  -webkit-transition-property: @property;
+  -moz-transition-property: @property;
+  -ms-transition-property: @property;
+  -o-transition-property: @property;
+  transition-property: @property;
+}
+
+
+.transition-property-transform(){
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -ms-transition-property: -ms-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+}

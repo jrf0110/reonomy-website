@@ -1,0 +1,74 @@
+///////////////
+// Hero Unit //
+///////////////
+
+@herounit-bg:             '/img/hero-unit-bg.jpg';
+@herounit-color:          #fff;
+@herounit-font-size:      72px;
+@herounit-line-height:    72px;
+@adjective-color:         @brand-secondary;
+
+.hero-unit {
+  display: table;
+  width: 100%;
+  padding-top: 80px;
+  .standard-padding();
+
+  background: url('@{herounit-bg}');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
+
+  font-size: @herounit-font-size;
+  line-height: @herounit-line-height;
+  text-align: center;
+  color: @herounit-color;
+}
+
+.hero-unit h1,
+.hero-unit .header-adjectives > li {
+  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.hero-unit h1 {
+  margin-top: 0;
+  line-height: 1em;
+}
+
+.hero-unit .header-adjectives {
+  width: 100%;
+  height: @herounit-line-height;
+  margin-bottom: 0;
+}
+
+.hero-unit .header-adjectives > li {
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: @adjective-color;
+}
+
+@media screen and (max-width: @breakpoint-tablet){
+  .hero-unit {
+    font-size: @herounit-font-size - 20px;
+    line-height: @herounit-line-height - 10px;
+  }
+
+  .hero-unit .header-adjectives {
+    height: @herounit-line-height - 15px;
+  }
+}
+
+@media screen and (max-width: @breakpoint-mobile){
+  .hero-unit {
+    font-size: @herounit-font-size - 42px;
+    line-height: @herounit-line-height - 15px;
+  }
+
+  .hero-unit .header-adjectives {
+    height: @herounit-line-height - 28px;
+  }
+}

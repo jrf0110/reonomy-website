@@ -7,13 +7,16 @@
 @navbar-mobile-height:  32px;
 @navbar-bg-color:       @gray-dark;
 @navbar-color:          #fff;
-@navbar-font-family:    'Soho Gothic';
 
 // Make the padding-top a little greater than the bottom for
 // a more "balanced" feeel
 @anchor-padding-offset: 2px;
 @anchor-padding-top: (@navbar-height / 2) + @anchor-padding-offset;
 @anchor-padding-bottom: (@navbar-height / 2) - @anchor-padding-offset;
+
+body {
+  padding-top: @navbar-height;
+}
 
 .navbar {
   position:       fixed;
@@ -26,14 +29,9 @@
   background:     @navbar-bg-color;
   z-index:        @navbar-zindex;
 
-  font-family:    @navbar-font-family;
   color:          @navbar-color;
 
   .drop-shadow( 0, 2px, 2px, 0.35 );
-}
-
-.navbar > .container {
-  overflow: hidden;
 }
 
 .navbar a {
@@ -45,11 +43,13 @@
   float: left;
   // Make the logo conform to navbar size
   height: 100%;
+  max-height: @navbar-height;
 }
 
 .navbar .nav {
   float: right;
   .transition( 0.5s, ease-in-out );
+  .transition-property-transform();
   .translate( 0, 0 );
 }
 
@@ -59,6 +59,7 @@
 
 .navbar .btn-request-demo {
   .transition( 0.5s, ease-in-out );
+  .transition-property( opacity );
   .opacity(1);
 }
 
@@ -67,10 +68,12 @@
 }
 
 .nav {
+  font-size: 0;
   margin: 0;
 }
 
 .nav > li {
+  font-size: @font-size-base;
   display: inline-block;
 }
 
@@ -82,6 +85,9 @@
   line-height: 0;
   text-transform: uppercase;
 
+  .transition( 0.2s, ease-in-out );
+  .transition-property( padding );
+
   &:hover {
     text-decoration: none;
     background: lighten( @navbar-bg-color, 5% );
@@ -89,15 +95,66 @@
 }
 
 // Make the navbar not so tall on mobile
-@media screen and (max-width: @breakpoint-mobile) {
+// Adjust breakpoint to account for nav items
+@media screen and (max-width: (@breakpoint-mobile + 100px)) {
   @anchor-padding-top: (@navbar-mobile-height / 2) + @anchor-padding-offset;
   @anchor-padding-bottom: (@navbar-mobile-height / 2) - @anchor-padding-offset;
 
+  body {
+    padding-top: @navbar-mobile-height;
+  }
+
   .navbar {
+    .standard-padding();
     min-height: @navbar-mobile-height;
   }
 
-  .nav a {
+  .navbar .navbar-logo {
+    max-height: @navbar-mobile-height;
+  }
+
+  .navbar .nav {
+    position: relative;
+    // width: 100%;
+    height: auto;
+  }
+
+  .navbar.hide-demo-btn .nav {
+    .translate( 0, 0 );
+  }
+
+  .navbar .nav.collapsed {
+    height: @navbar-mobile-height;
+    overflow: hidden;
+  }
+
+  .navbar .nav:before {
+    .font-awesome("\f0c9");
+    display: block;
+    text-align: right;
+    font-size: 18px;
+    line-height: 0;
+    padding-top: @navbar-mobile-height / 2;
+    padding-bottom: @navbar-mobile-height / 2;
+  }
+
+  .navbar .nav:hover {
+    cursor: pointer;
+    color: darken( #fff, 10% );
+  }
+
+  .navbar .nav li {
+    display: block;
+    text-align: right;
+  }
+
+  .navbar .nav li:first-child {
+    margin-top: 20px;
+  }
+
+  .navbar .nav a {
+    display: block;
     padding: @anchor-padding-top 20px @anchor-padding-bottom;
+    margin-right: 0 - (@gutter-width / 2);
   }
 }

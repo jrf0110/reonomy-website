@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reonomy Description" />
 
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/core.gen.css">
 
     <script src="/bower_components/jquery/jquery.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/js/components/component.text-rotator.js"></script>
     <script src="/js/components/component.navbar.js"></script>
     <script>
       $(function(){
         $('.navbar').reonomyNavbar().start();
+        $('.text-rotator').rotator({ interval: 5000 });
       });
     </script>
   </head>
   <body>
     <!--<Navbar>-->
-    <div class="navbar hide-demo-btn">
+    <header class="navbar hide-demo-btn">
       <div class="container">
         <img class="navbar-logo" src="/img/reonomy-logo.png" alt="Reonomy">
 
-        <ul class="nav">
+        <ul class="nav collapsed">
           <li><a href="company.html">Company</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="blog.html">Blog</a></li>
@@ -34,8 +37,18 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div style="height: 10000px">ohai</div>
+    </header>
     <!--</Navbar>-->
+
+    <!--<HeroUnit>-->
+    <div class="hero-unit">
+      <ul class="header-adjectives text-rotator">
+        <li>Validated</li>
+        <li>Powerful</li>
+        <li>Comprehensive</li>
+      </ul>
+      <h1>Data &amp; Analytics<br />for CRE Finance</h1>
+    </div>
+    <!--</HeroUnit>-->
   </body>
 </html>
