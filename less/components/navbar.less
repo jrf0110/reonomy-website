@@ -15,7 +15,9 @@
 @anchor-padding-bottom: (@navbar-height / 2) - @anchor-padding-offset;
 
 body {
-  padding-top: @navbar-height;
+  // -1 because some browsers are rendering artifacts
+  // at that pixel border
+  padding-top: @navbar-height - 1;
 }
 
 .navbar {
@@ -108,7 +110,9 @@ body {
   @anchor-padding-bottom: (@navbar-mobile-height / 2) - @anchor-padding-offset;
 
   body {
-    padding-top: @navbar-mobile-height;
+    // -1 because some browsers are rendering artifacts
+    // at that pixel border
+    padding-top: @navbar-mobile-height - 1;
   }
 
   .navbar {
