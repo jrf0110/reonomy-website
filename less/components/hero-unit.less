@@ -6,7 +6,7 @@
 @herounit-color:          #fff;
 @herounit-font-size:      72px;
 @herounit-line-height:    72px;
-@adjective-color:         @brand-secondary;
+@adjective-color:         @brand-primary;
 
 .hero-unit {
   display: table;
@@ -18,6 +18,10 @@
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat no-repeat;
+
+  // Overflow: hidden because sometimes the screenshot
+  // is hanging over the edge in chome at certain widths
+  overflow: hidden;
 
   font-size: @herounit-font-size;
   line-height: @herounit-line-height;
@@ -49,6 +53,10 @@
   width: 100%;
   text-align: center;
   color: @adjective-color;
+}
+
+.hero-unit .btn-call-to-action {
+  color: @brand-primary;
 }
 
 .hero-unit .hero-unit-screenshot {

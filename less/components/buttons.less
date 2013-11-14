@@ -2,19 +2,34 @@
 // Buttons //
 /////////////
 
+.brand-btn( @bg, @color ){
+  background-color: @bg;
+  color: @color;
+  &:hover {
+    background-color: lighten( @bg, 2% );
+  }
+}
+
 .btn {
   display: inline-block;
   border: none;
   background: transparent;
   padding: @btn-padding-base;
   font-family: @btn-font-family;
-  font-size: @font-size-base;
-  line-height: @line-height-base;
-  font-weight: @font-weight-base;
+  font-size: @btn-font-size;
+  line-height: @line-height-small;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .btn-large {
-  font-size: @font-size-base + 1;
+  font-size: @btn-large-font-size;
   line-height: @line-height-base;
   padding: @btn-padding-large;
 }
@@ -22,4 +37,19 @@
 .btn-default {
   border: solid #fff 3px;
   color: #fff;
+  &:hover {
+    background-color: rgba( 255, 255, 255, 0.07 );
+  }
+}
+
+.btn-tertiary {
+  border-color: @brand-tertiary;
+  .brand-btn( @brand-tertiary, #AB8FA8 );
+}
+
+.btn-request-demo:after {
+  .icon-font("\f109");
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 6px;
 }

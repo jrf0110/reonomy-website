@@ -33,7 +33,7 @@
     $this.find('.nav').click( function( e ){
       // Ensure original target is the nav not `li` or `a`
       if ( !$(e.currentTarget).hasClass('nav') ) return;
-      $this.find('.nav').toggleClass('collapsed');
+      $this.toggleClass('collapsed');
     });
 
     var navbar = {
