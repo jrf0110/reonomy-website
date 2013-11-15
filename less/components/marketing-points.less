@@ -1,0 +1,39 @@
+//////////////////////
+// Marketing Points //
+//////////////////////
+
+@point-padding: 50px 40px 40px;
+@even-bg: rgba( 0, 0, 0, 0.02 );
+
+.marketing-points {
+  #grid > .row();
+}
+
+.marketing-points > .point {
+  #grid > .column(33%);
+  padding: @point-padding;
+  color: @gray;
+}
+
+// Explicitly say the second child gets our darker bg
+// for less capable browsers
+.marketing-points > .point:first-child + .point,
+.marketing-points > .point:nth-child(2n) {
+  background-color: @even-bg;
+}
+
+.marketing-points > .point:first-child + .point ~ .point {
+  background-color: transparent;
+}
+
+.marketing-points .point-title {
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.marketing-points p {
+  font-size: @font-size-small;
+  letter-spacing: 1.4px;
+  line-height: 1.6em;
+}

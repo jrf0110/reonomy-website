@@ -5,20 +5,34 @@
 // Colors
 ////////////////////////////////////////////////////
 @white:                     #fff;
+@gray:                      #A4A4A4;
 @gray-dark:                 #232323;
+@gray-light:                #E3E5E4;
 @off-gray:                  #695C72;
 @brand-primary:             #33D29C;
 @brand-secondary:           #2B2029;
 @brand-tertiary:            #453C4D;
+// @brand-quaternary:          #4A3547;
+//                             #4A3555
+
+@brand-quaternary: rgb(
+  red( @brand-tertiary ) + 5
+, green( @brand-tertiary ) - 7
+, blue( @brand-tertiary ) - 6
+);
+
 @body-bg-color:             #ffffff;
 
 
 // Type
 ////////////////////////////////////////////////////
-@font-family-base:          'Soho Gothic';
-@font-weight-base:          500;
+@font-family-serif:         'Soho';
+@font-family-sans-serif:    'Soho Gothic';
+
+@font-family-base:          @font-family-sans-serif;
+@font-weight-base:          300;
 @font-size-base:            14px;
-@font-size-small:           @font-size-base - 2;
+@font-size-small:           @font-size-base - 1;
 @font-size-large:           @font-size-base + 4;
 @line-height-base:          24px;
 @line-height-large:         @line-height-base + 4;
@@ -33,13 +47,13 @@
 
 // Buttons
 ////////////////////////////////////////////////////
-@btn-font-family:           'Soho';
+@btn-font-family:           @font-family-serif;
 @btn-font-size:             @font-size-base - 5;
 @btn-large-font-size:       @font-size-base - 1;
 
-@btn-padding-top-base:      6px;
-@btn-padding-right-base:    20px;
-@btn-padding-bottom-base:   5px;
+@btn-padding-top-base:      8px;
+@btn-padding-right-base:    16px;
+@btn-padding-bottom-base:   @btn-padding-top-base - 1;
 @btn-padding-left-base:     @btn-padding-right-base;
 
 @btn-padding-top-large:     14px;

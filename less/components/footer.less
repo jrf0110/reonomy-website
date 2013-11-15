@@ -2,12 +2,15 @@
 // Footer //
 ////////////
 
+@footer-height:         140px;
 @footer-bg-color:       @gray-dark;
 @footer-color:          #fff;
 
 .footer {
   #sections > .dark();
-  height: 140px;
+  .standard-padding();
+  height: @footer-height;
+  padding-top: 30px;
 }
 
 .footer .nav {

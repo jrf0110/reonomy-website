@@ -4,27 +4,31 @@
 
 // Third-pary deps
 @import (less) "../bower_components/normalize-css/normalize.css";
-@import "../bower_components/semantic-grid/stylesheets/less/grid.less";
+// @import "../bower_components/semantic-grid/stylesheets/less/grid.less";
 @import "../bower_components/less-elements/elements.less";
 
 @import "variables.less";
 @import "mixins.less";
 @import "font-face.less";
+@import "typography.less";
+@import "buttons.less";
 
 // Components
-@import "components/buttons.less";
 @import "components/navbar.less";
 @import "components/footer.less";
 @import "components/text-rotator.less";
 @import "components/hero-unit.less";
+@import "components/landing-section.less";
+@import "components/marketing-points.less";
+
+@import "component-site-overrides.less";
 
 html, body {
-  background-color:     @body-bg-color; 
+  background-color:     @body-bg-color;
   font-family:          @font-family-base;
   font-size:            @font-size-base;
   font-weight:          @font-weight-base;
   line-height:          @line-height-base;
-  min-height: 2000px;
 }
 
 * {

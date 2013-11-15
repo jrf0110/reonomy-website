@@ -2,6 +2,25 @@
 // Mixins //
 ////////////
 
+#grid {
+  .row(){
+    display: table;
+    width: 100%;
+  }
+
+  .column( @width ){
+    display: block;
+    float: left;
+    width: @width;
+
+    @media screen and ( max-width: @breakpoint-mobile ){
+      & {
+        width: 100%;
+      }
+    }
+  }
+}
+
 #sections {
   .dark(){
     background-color: @gray-dark;

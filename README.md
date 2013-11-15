@@ -26,4 +26,5 @@ grunt build
 
 There were a number of places where I made a design choice that I thought Reonomy would favor over what was provided in the design. Here's a list of those choices:
 
+* I added a maximum width to site content
 * Marketing points line-height increase by a few pixels
