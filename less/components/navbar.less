@@ -137,7 +137,7 @@ body {
     background: #1A1919;
     left: 0;
     top: @navbar-mobile-height + 2;
-    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   .navbar.collapsed {
@@ -156,6 +156,7 @@ body {
     position: relative;
     // width: 100%;
     height: auto;
+    text-align: right;
   }
 
   .navbar.hide-demo-btn .nav {
@@ -170,12 +171,28 @@ body {
   .navbar .nav:before {
     .icon-font();
     content: "\f0c9";
-    display: block;
-    text-align: right;
+    display: inline-block;
+    margin-top: (@navbar-mobile-height / 2) - 12;
+    margin-bottom: @navbar-mobile-height / 2;
+    padding: 12px 5px 10px;
+    border-radius: 3px;
+    border: solid 1px rgba( 0, 0, 0, 0.3 );
+    box-shadow: none;
+    text-shadow: 0 -1px 0 rgba( 0, 0, 0, 0.4 );
     font-size: 18px;
     line-height: 0;
-    padding-top: @navbar-mobile-height / 2;
-    padding-bottom: @navbar-mobile-height / 2;
+  }
+
+  .navbar.collapsed .nav:before {
+    border: solid 1px rgba( 0, 0, 0, 0.3 );
+    box-shadow: 0 1px 0 rgba( 255, 255, 255, 0.06 ),
+      inset 0 1px 0 rgba( 255, 255, 255, 0.03 );
+  }
+
+  .navbar.collapsed .nav:hover:before {
+    background-color: rgba( 255, 255, 255, 0.01 );
+    box-shadow: 0 1px 0 rgba( 255, 255, 255, 0.06 ),
+      inset 0 1px 0 rgba( 255, 255, 255, 0.06 );
   }
 
   .navbar .nav:hover {
