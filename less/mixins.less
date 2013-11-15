@@ -2,6 +2,17 @@
 // Mixins //
 ////////////
 
+#sections {
+  .dark(){
+    background-color: @gray-dark;
+    color: @white;
+
+    & a {
+      color: @white;
+    }
+  }
+}
+
 .reset-ul(){
   margin: 0;
   padding: 0;
