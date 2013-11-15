@@ -8,8 +8,7 @@
   list-style: none;
 }
 
-.icon-font( @icon ){
-  content: @icon;
+.icon-font(){
   display: inline-block;
   vertical-align: middle;
   font-family: FontAwesome;
@@ -19,6 +18,11 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-font( @icon ) when ( @icon ){
+  content: @icon;
+  .icon-font();
 }
 
 .font-awesome( @icon ){
@@ -37,7 +41,6 @@
   -o-transition-property: @property;
   transition-property: @property;
 }
-
 
 .transition-property-transform(){
   -webkit-transition-property: -webkit-transform;
