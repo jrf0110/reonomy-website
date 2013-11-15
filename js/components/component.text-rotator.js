@@ -1,5 +1,24 @@
 /**
  * Component.TextRotator
+ *
+ * Applies the text rotation logic to the $element.
+ * The plugin doesn't actually do any work beyond
+ * adding and removin the `active` class. The library
+ * consumer can then use CSS effects to style the
+ * animations. I provided a `blink` style animation
+ * inside of /less/components/text-rotator.less
+ *
+ * Returns an interface for controlling the animation
+ *
+ * var headerRotator = $('header').rotator({
+ *   interval: 8000
+ * });
+ *
+ * // Stop the animation
+ * headerRotator.stop();
+ *
+ * // Start the animation
+ * headerRotator.start();
  */
 
 ;(function(){
