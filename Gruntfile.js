@@ -26,6 +26,7 @@ module.exports = function( grunt ){
       dev: {
         files: {
           "css/core.gen.css":          "less/core.less"
+        , "css/ielt9.gen.css":         "less/ielt9.less"
         }
       }
     }

@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reonomy Description" />
 
+    <!--[if lt IE 9]>
+    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/core.gen.css">
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/css/ielt9.gen.css">
+    <![endif]-->
 
     <script src="/bower_components/jquery/jquery.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/js/components/component.text-rotator.js"></script>
     <script src="/js/components/component.navbar.js"></script>
+
     <script>
       $(function(){
         $('.navbar').reonomyNavbar().start();
