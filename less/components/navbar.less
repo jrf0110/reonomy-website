@@ -136,8 +136,8 @@ body {
     height: 1px;
     background: #1A1919;
     left: 0;
-    top: 42px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    top: @navbar-mobile-height + 2;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.06);
   }
 
   .navbar.collapsed {
@@ -168,7 +168,8 @@ body {
   }
 
   .navbar .nav:before {
-    .font-awesome("\f0c9");
+    .icon-font();
+    content: "\f0c9";
     display: block;
     text-align: right;
     font-size: 18px;

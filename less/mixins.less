@@ -11,12 +11,26 @@
       color: @white;
     }
   }
+
+  .brand-primary(){
+    background-color: @band-primary;
+    color: @white;
+
+    & a {
+      color: @white;
+    }
+  }
 }
 
 .reset-ul(){
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.icon-font( @icon ) when ( @icon ){
+  content: @icon;
+  .icon-font();
 }
 
 .icon-font(){
@@ -29,11 +43,6 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-font( @icon ) when ( @icon ){
-  content: @icon;
-  .icon-font();
 }
 
 .font-awesome( @icon ){
