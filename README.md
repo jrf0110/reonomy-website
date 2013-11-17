@@ -26,5 +26,6 @@ grunt build
 
 There were a number of places where I made a design choice that I thought Reonomy would favor over what was provided in the design. Here's a list of those choices:
 
+* The navbar request a demo button was built with plain html+css - The font weight doesn't look quite as nice as the PSD
 * I added a maximum width to site content
 * Marketing points line-height increase by a few pixels

@@ -1,0 +1,95 @@
+//////////////////
+// Photo Viewer //
+//////////////////
+
+@thumbnail-width:       160px;
+@thumbnail-bg:          #D1D1D1;
+@indicator-size:        16px;
+@indicator-spacing:     16px;
+@indicator-bg:          @thumbnail-bg;
+@indicator-bg-active:   rgb(
+  red( @brand-primary ) + 8
+, green( @brand-primary ) + 22
+, blue( @brand-primary ) + 7
+);
+
+.photo-viewer {
+  position: relative;
+  height: 500px;
+}
+
+.photo-viewer .photo-nav {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: @indicator-size;
+}
+
+.photo-nav li {
+  position: relative;
+  right: 0;
+  width: @indicator-size;
+  height: @indicator-size + 16px;
+  margin-top: 8px;
+  float: right;
+  clear: both;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.photo-nav li:first-child {
+  margin-top: 0;
+}
+
+.photo-nav li:after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 14px;
+  display: inline-block;
+  width: @indicator-size;
+  height: @indicator-size;
+  border-radius: @indicator-size * 2;
+  background-color: @indicator-bg;
+}
+
+.photo-nav li img {
+  padding: 6px 16px 10px;
+  background-color: @thumbnail-bg;
+}
+
+.photo-nav .photo-title {
+  // Sufficiently hide content
+  margin-top: 100px;
+
+  margin-bottom: 0;
+  padding: 10px;
+  padding-bottom: 0;
+  background-color: @thumbnail-bg;
+  color: @gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+  line-height: 12px;
+}
+
+.photo-nav li.active,
+.photo-nav li:hover {
+  .sprite('triangle');
+  width: @thumbnail-width + @indicator-size + @indicator-spacing;
+  overflow: visible;
+  padding-right: 40px;
+}
+
+.photo-nav li.active .photo-title,
+.photo-nav li:hover .photo-title {
+  margin-top: -82px;
+}
+
+.photo-nav li.active:after,
+.photo-nav li:hover:after {
+  background-color: @indicator-bg-active;
+  margin-left: @indicator-spacing;
+}
