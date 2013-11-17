@@ -18,6 +18,7 @@
       // Pixel interval to go to next photo for browsers
       // that support the scrolling
     , pxInterval: 200
+    , scrollMode: true
     };
 
     options = $.extend( {}, defaults, options );
@@ -42,28 +43,35 @@
         return $this;
       }
 
+    , go: function( index ){
+        if ( index >= $items.length ) return;
+        if ( index < 0 ) return;
+
+        viewer.clearCurrent();
+        viewer.curr = index;
+        viewer.setCurrent();
+      }
+
     , next: function(){
-        if ( viewer.curr >= $items.length ) return;
-
-        $items.eq( viewer.curr ).removeClass('active');
-        $photos.eq( viewer.curr ).removeClass('active');
-
-        viewer.curr++;
-
-        $items.eq( viewer.curr ).addClass('active');
-        $photos.eq( viewer.curr ).addClass('active');
+        viewer.go( viewer.curr + 1 );
       }
 
     , prev: function(){
-        if ( viewer.curr <= 0 ) return;
+        viewer.go( viewer.curr - 1 );
+      }
 
+    , clearCurrent: function(){
         $items.eq( viewer.curr ).removeClass('active');
         $photos.eq( viewer.curr ).removeClass('active');
+      }
 
-        viewer.curr--;
-        
+    , setCurrent: function(){
         $items.eq( viewer.curr ).addClass('active');
         $photos.eq( viewer.curr ).addClass('active');
+        $holder.css({
+          'width': $photos.eq( viewer.curr ).width() + 'px'
+        , 'height': $photos.eq( viewer.curr ).height() + 'px'
+        });
       }
 
     , _tick : function(){
@@ -75,7 +83,13 @@
       }
     };
 
-    viewer.start();
+    if ( !options.scrollMode ){
+      viewer.start();
+    } else {
+      // $this.waypoint( function(){
+      //   $this.addClass('')
+      // });
+    }
 
     return viewer;
   };
