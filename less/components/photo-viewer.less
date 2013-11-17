@@ -93,3 +93,15 @@
   background-color: @indicator-bg-active;
   margin-left: @indicator-spacing;
 }
+
+.photo-wrapper > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  .opacity(0);
+  .transition( 0.4s, ease-in-out );
+}
+
+.photo-wrapper > img.active {
+  .opacity(1);
+}

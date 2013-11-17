@@ -20,11 +20,13 @@
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/js/components/component.text-rotator.js"></script>
     <script src="/js/components/component.navbar.js"></script>
+    <script src="/js/components/component.photo-viewer.js"></script>
 
     <script>
       $(function(){
-        $('.navbar').reonomyNavbar().start();
+        $('.navbar').navbar().start();
         $('.text-rotator').rotator({ interval: 5000 });
+        $('.photo-viewer').photoViewer({ interval: 5000 });
       });
     </script>
   </head>

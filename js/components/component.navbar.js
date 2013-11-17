@@ -19,7 +19,7 @@
   // re-adding scroll listeners
   var prevListener;
 
-  $.fn.reonomyNavbar = function( options ){
+  $.fn.navbar = function( options ){
     var $this = this;
 
     var defaults = {
