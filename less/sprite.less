@@ -2,9 +2,16 @@
 // Sprite //
 ////////////
 
+.sprite( @graphic ) when ( @graphic = 'screenshot-chrome' ){
+  background-position: 0 0;
+}
+
+.sprite( @graphic ) when ( @graphic = 'screenshot-shadow' ){
+  background-position: -18px -50px;
+}
+
 .sprite( @graphic ) when ( @graphic = 'triangle' ){
-  background-position-x: 137px;
-  background-position-y: -126px;
+  background-position: 137px -126px;
 }
 
 .sprite( @graphic ){

@@ -24,16 +24,33 @@
     options = $.extend( {}, defaults, options );
 
     // Intial setup - copy img's from the nav to the holder
-    $items.each( function(){
+    $items.each( function( i ){
       var $clone = $(this).find('img').clone();
+      $clone.addClass('photo');
       $photos = $photos.add( $clone );
       $holder.append( $clone );
+
+      // Make static clone to fix heights
+      $clone = $clone.clone();
+      $clone.removeClass('photo');
+      $clone.addClass('active-static');
+      $holder.append( $clone );
+
+      // Setup click handler
+      $(this).click( function(){
+        viewer.go( i );
+        if ( viewer.timeout ){
+          viewer.stop();
+          viewer.setTick();
+        }
+      });
     });
 
     var viewer = {
       curr: -1
 
     , start: function(){
+        viewer.setCurrent();
         viewer._tick();
         return $this;
       }
@@ -68,18 +85,17 @@
     , setCurrent: function(){
         $items.eq( viewer.curr ).addClass('active');
         $photos.eq( viewer.curr ).addClass('active');
-        $holder.css({
-          'width': $photos.eq( viewer.curr ).width() + 'px'
-        , 'height': $photos.eq( viewer.curr ).height() + 'px'
-        });
+      }
+
+    , setTick: function(){
+        viewer.timeout = setTimeout( viewer._tick, options.interval );
       }
 
     , _tick : function(){
         if ( viewer.curr >= ($items.length - 1) ) viewer.curr = -1;
 
         viewer.next();
-
-        viewer.timeout = setTimeout( viewer._tick, options.interval );
+        viewer.setTick();
       }
     };
 

@@ -2,6 +2,7 @@
 // Photo Viewer //
 //////////////////
 
+@chrome-height:         40px;
 @thumbnail-width:       160px;
 @thumbnail-bg:          #D1D1D1;
 @indicator-size:        16px;
@@ -101,17 +102,51 @@
 
 .photo-wrapper {
   display: inline-block;
+  box-sizing: content-box;
+  min-width: 789px;
+  // Size of screenshot `chrome`
   margin-right: 60px;
 }
 
-.photo-wrapper > img {
+.photo-wrapper:before {
+  .sprite('screenshot-chrome');
+  content: "";
+  display: block;
+  height: @chrome-height;
+}
+
+.photo-wrapper:after {
+  @extra-space: 20px;
+
+  .sprite('screenshot-shadow');
+  content: "";
+  display: block;
+  margin-top: 4px;
+  height: 50px;
+  padding: 0 @extra-space;
+  margin-left: -@extra-space;;
+  margin-right: -@extra-space;;
+}
+
+.photo-wrapper > .photo {
   position: absolute;
-  top: 0;
+  top: @chrome-height;
   left: 0;
+  padding-left: 6px;
   .opacity(0);
   .transition( 0.4s, ease-in-out );
 }
 
-.photo-wrapper > img.active {
+.photo-wrapper > .photo.active {
+  position: absolute;
   .opacity(1);
+}
+
+.photo-wrapper > .active-static {
+  display: none;
+  visibility: hidden;
+}
+
+.photo-wrapper > .photo.active + .active-static {
+  display: block;
 }
