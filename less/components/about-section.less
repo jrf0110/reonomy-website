@@ -1,0 +1,98 @@
+///////////////////
+// About Section //
+///////////////////
+
+@section-height: 824px;
+@content-offset: 226px;
+@anchor-bg: rgb(
+  red( @brand-secondary ) + 103
+, green( @brand-secondary ) + 96
+, blue( @brand-secondary ) + 109
+);
+
+.section-about {
+  #sections > .brand-secondary();
+  #grid > .row();
+  height: 824px;
+  padding: 0;
+}
+
+.section-about .left,
+.section-about .right {
+  #grid > .column( 50% );
+  .standard-padding();
+}
+
+.section-about .left {
+  height: 100%;
+  background-image: url('/img/about-section-bg.jpg');
+  background-size: cover;
+  padding-left: 0;
+}
+
+.section-about .section-header {
+  position: absolute;
+  top: @content-offset;
+  right: 20px;
+  width: 332px;
+  margin-top: 0;
+  font-size: 49px;
+  text-align: right;
+  z-index: 4;
+}
+
+.section-about .section-header a {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: @anchor-bg;
+  color: #000;
+}
+
+.section-about .section-header a:hover {
+  background-color: lighten(@anchor-bg, 3%);
+  text-decoration: none;
+}
+
+.section-about .section-header a:before {
+  content: "\f060";
+  .icon-font();
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.section-about .section-content {
+  position: absolute;
+  top: @content-offset;
+  left: 40px;
+  width: 350px;
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.2em;
+  line-height: 2em;
+  font-weight: 300;
+  letter-spacing: 1px;
+  z-index: 4;
+}
+
+// Lattice work
+.section-about:before {
+  .sprite('lattice-1');
+  content: "";
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -454px;
+}
+
+.section-about:after {
+  .sprite('lattice-2');
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -150px;
+}
