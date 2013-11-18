@@ -1,0 +1,49 @@
+////////////////////////////
+// Stats Marketing Points //
+////////////////////////////
+
+@color:         #3E3E3E;
+@point-padding: 50px 40px 100px;
+
+.stats-marketing-points {
+  #grid > .row();
+}
+
+.stats-marketing-points > .point {
+  #grid > .column(33%);
+  padding: @point-padding;
+}
+
+.stats-marketing-points > .point {
+  border-right: 1px solid @color;
+  border-left: 1px solid @color;
+}
+
+.stats-marketing-points > .point:first-child {
+  border-left: none;
+}
+
+.stats-marketing-points > .point:last-child {
+  border-right: none;
+}
+
+.stats-marketing-points .point-stat {
+  font-family: @font-family-sans-serif;
+  font-size: 9em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0;
+  margin-top: 80px;
+  letter-spacing: 1.4px;
+}
+
+.stats-marketing-points .point-stat .units {
+  font-size: 0.7em;
+}
+
+.stats-marketing-points .point-text {
+  font-size: 0.21em;
+  color: @color;
+  letter-spacing: 1.4px;
+  margin-top: 80px;
+}

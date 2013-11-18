@@ -2,6 +2,15 @@
 // Mixins //
 ////////////
 
+// #33D29C
+// #5DA58D
+
+@brand-primary-darker: rgb(
+  red( @brand-primary ) + 42
+, green( @brand-primary ) - 45
+, blue( @brand-primary ) - 15
+);
+
 #grid {
   .row(){
     display: table;
@@ -31,8 +40,17 @@
     }
   }
 
+  .darker(){
+    background-color: @gray-darker;
+    color: #3E3E3E;
+
+    & h1, & h2, & h3, & h4, & h5 {
+      color: @brand-primary;
+    }
+  }
+
   .brand-primary(){
-    background-color: @band-primary;
+    background-color: @brand-primary-darker;
     color: @white;
 
     & a, & h1, & h2, & h3, & h4, & h5, & p {
