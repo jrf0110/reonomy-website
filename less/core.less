@@ -25,6 +25,7 @@
 @import "components/stats-marketing-points.less";
 @import "components/photo-viewer.less";
 @import "components/about-section.less";
+@import "components/testimonials.less";
 
 @import "component-site-overrides.less";
 
@@ -57,13 +58,9 @@ img {
 }
 
 .container {
-  display: table;
-  width: @container-width;
-  margin: 0 auto;
+  #grid > .container();
 }
 
-@media screen and ( max-width: @container-width ){
-  .container {
-    width: 100%;
-  }
+.row {
+  #grid > .row();
 }

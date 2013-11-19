@@ -1,0 +1,83 @@
+//////////////////
+// Testimonials //
+//////////////////
+
+@testimonial-color:               #909090;
+@testimonial-padding-left:        40px;
+
+.testimonials {
+  #grid > .row();
+  #grid > .container();
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.testimonials .testimonial {
+  #grid > .column(50%);
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      .standard-padding();
+    }
+  }
+}
+
+.testimonial blockquote {
+  font-family: 'Soho Gothic Light';
+  padding-left: @testimonial-padding-left;
+  margin: 0;
+  margin-bottom: 40px;
+  font-size: 1.3em;
+  font-style: italic;
+  line-height: 1.45em;
+  color: @testimonial-color;
+  text-align: left;
+  font-weight: 300;
+}
+
+.testimonial blockquote:before {
+  content: "";
+  .sprite('open-quote');
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+
+.testimonial blockquote:after {
+  content: "";
+  .sprite('close-quote');
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 8px;
+  margin-bottom: -2px;
+}
+
+.testimonial .author {
+  text-align: left;
+  padding-left: @testimonial-padding-left;
+}
+
+.testimonial .author-logo {
+  vertical-align: middle;
+}
+
+.testimonial .author-info {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 24px;
+}
+
+.testimonial .author-name {
+  font-size: 0.9em;
+  letter-spacing: 0.8px;
+  margin-top: 0;
+  margin-bottom: -4px;
+  color: @off-gray;
+}
+
+.testimonial .author-cred {
+  color: lighten( desaturate( @off-gray, 4% ), 14% );
+}
