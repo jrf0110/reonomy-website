@@ -2,3 +2,27 @@
 // Login //
 ///////////
 
+.login-wrapper {
+  #grid > .container();
+
+  position: fixed;
+  top: -@navbar-height;
+  z-index: @login-zindex;
+
+  .opacity( 0 );
+  .transition( ease-in-out, 0.5s );
+}
+
+.login-wrapper.active {
+  top: @navbar-height - 2;
+  .opacity( 1 );
+}
+
+.login-wrapper > .login-box {
+  #sections > .brand-secondary();
+  float: right;
+  width: 400px;
+  height: 100%;
+  padding-top: 20px;
+  .standard-padding();
+}
