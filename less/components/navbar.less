@@ -76,11 +76,12 @@ body {
 
   .transition( 0.2s, ease-in-out );
   .transition-property( padding );
+}
 
-  &:hover {
-    text-decoration: none;
-    background: lighten( @navbar-bg-color, 5% );
-  }
+.navbar .nav a:hover,
+.navbar .nav .active a {
+  text-decoration: none;
+  background: lighten( @navbar-bg-color, 5% );
 }
 
 // Once the container relies on width: 100% add standard padding

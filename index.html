@@ -66,6 +66,12 @@
         });
 
         aboutRotator.start();
+
+        $('.login-toggle').click( function( e ){
+          e.preventDefault();
+          $('.login-wrapper').toggleClass('active');
+          $(this).parents('li').eq(0).toggleClass('active');
+        });
       });
     </script>
   </head>
@@ -82,7 +88,7 @@
           <li><a href="careers.html">Careers</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="#" class="login-toggle">Login</a></li>
           <li>
             <button class="btn btn-tertiary btn-request-demo" data-icon="laptop">Request a Demo</button>
           </li>
