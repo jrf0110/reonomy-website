@@ -4,6 +4,7 @@
 
 @section-height: 824px;
 @content-offset: 226px;
+@content-gutter: 40px;
 @anchor-bg: rgb(
   red( @brand-secondary ) + 103
 , green( @brand-secondary ) + 96
@@ -12,29 +13,36 @@
 
 .section-about {
   #sections > .brand-secondary();
-  #grid > .row();
   height: 824px;
   padding: 0;
 }
 
-.section-about .left,
-.section-about .right {
-  #grid > .column( 50% );
-  .standard-padding();
-}
-
-.section-about .left {
+.section-about .supporting-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
   height: 100%;
   background-image: url('/img/about-section-bg.jpg');
   background-size: cover;
-  padding-left: 0;
+}
+
+.section-about .article {
+  #grid > .row();
+  @width: 742px;
+  padding-top: @content-offset;
+  margin-left: auto;
+  margin-right: auto;
+  width: @width;
+}
+
+.section-about .section-header,
+.section-about .section-content {
+  #grid > .column(50%);
 }
 
 .section-about .section-header {
-  position: absolute;
-  top: @content-offset;
-  right: 20px;
-  width: 332px;
+  padding-right: @content-gutter;
   margin-top: 0;
   font-size: 49px;
   text-align: right;
@@ -63,10 +71,7 @@
 }
 
 .section-about .section-content {
-  position: absolute;
-  top: @content-offset;
-  left: 40px;
-  width: 350px;
+  padding-left: @content-gutter;
   margin-top: 0;
   text-align: left;
   font-size: 1.2em;

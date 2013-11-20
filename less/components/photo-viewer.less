@@ -8,10 +8,11 @@
 @indicator-size:        16px;
 @indicator-spacing:     16px;
 @indicator-bg:          @thumbnail-bg;
+
 @indicator-bg-active:   rgb(
-  red( @brand-primary ) + 8
-, green( @brand-primary ) + 22
-, blue( @brand-primary ) + 7
+  red( @brand-primary ) + 13
+, green( @brand-primary ) - 24
+, blue( @brand-primary ) - 11
 );
 
 .photo-viewer {
@@ -69,7 +70,7 @@
   padding: 10px;
   padding-bottom: 0;
   background-color: @thumbnail-bg;
-  color: @gray;
+  color: darken( @gray, 10% );
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 300;
