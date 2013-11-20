@@ -77,13 +77,25 @@
   margin-left: 24px;
 }
 
-.btn-default {
+.btn-color( @color ){
   border-style: solid;
-  border-color: #fff;
-  color: #fff;
+  border-color: @color;
+  color: @color;
   &:hover {
     background-color: rgba( 255, 255, 255, 0.07 );
   }
+};
+
+.btn-default {
+  .btn-color( #fff );
+}
+
+.btn-primary {
+  .btn-color( @brand-primary );
+}
+
+.btn-secondary {
+  .btn-color( @brand-secondary );
 }
 
 .btn-tertiary {

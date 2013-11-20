@@ -20,6 +20,7 @@
     "less-elements": "*",
     "lodash": "~2.2.1",
     "html5shiv": "~3.7.0",
-    "jquery-waypoints": "~2.0.3"
+    "jquery-waypoints": "~2.0.3",
+    "colorbox": "~1.4.33"
   }
 }
