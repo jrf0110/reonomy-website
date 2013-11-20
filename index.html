@@ -20,7 +20,6 @@
     <script src="/bower_components/jquery-waypoints/waypoints.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/js/components/component.active-interval.js"></script>
-    <script src="/js/components/component.text-rotator.js"></script>
     <script src="/js/components/component.navbar.js"></script>
     <script src="/js/components/component.photo-viewer.js"></script>
 
@@ -29,6 +28,19 @@
         $('.navbar').navbar().start();
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
         $('.photo-viewer').photoViewer({ scrollMode: false });
+
+        var aboutRotator = $('.section-about article').activeInterval({
+          interval: 5000
+        });
+
+        $('.section-about .next').click( function( e ){
+          e.preventDefault();
+          aboutRotator.stop();
+          aboutRotator.next();
+          aboutRotator.setTick();
+        });
+
+        aboutRotator.start();
       });
     </script>
   </head>
@@ -147,7 +159,22 @@
 
     <section class="page-section section-about">
       <article class="article">
-        <h2 class="section-header">In this competitive market, <a href="#">lenders</a> need an advantage</h2>
+        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+        <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
+      </article>
+
+      <article class="article">
+        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+        <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
+      </article>
+
+      <article class="article">
+        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+        <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
+      </article>
+
+      <article class="article">
+        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
         <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
       </article>
       <div class="supporting-bg"></div>

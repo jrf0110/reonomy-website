@@ -27,12 +27,16 @@
     var defaults = {
       interval:   5000
     , className:  'active'
+    , upNext:     'up-next'
+    , onTickBefore: function( interval ){}
     };
 
     options = $.extend( {}, defaults, options );
 
     var interval = {
       curr: -1
+
+    , $els: $this
 
     , start: function(){
         interval._tick();
@@ -48,16 +52,22 @@
         if ( index >= $this.length ) return;
         if ( index < 0 ) return;
 
-        $this.eq( interval.curr ).removeClass( optinos.className );
+        $this.eq( interval.curr ).removeClass( options.className );
+        $this.eq( (interval.curr + 1) % $this.length ).removeClass( options.upNext );
+
         interval.curr = index;
-        $this.eq( interval.curr ).addClass( optinos.className );
+
+        $this.eq( interval.curr ).addClass( options.className );
+        $this.eq( (interval.curr + 1) % $this.length ).addClass( options.upNext );
       }
 
     , next: function(){
+        interval.cycleCurr();
         interval.go( interval.curr + 1 );
       }
 
     , prev: function(){
+        interval.cycleCurr();
         interval.go( interval.curr - 1 );
       }
 
@@ -65,9 +75,14 @@
         interval.timeout = setTimeout( interval._tick, options.interval );
       }
 
-    , _tick : function(){
+    , cycleCurr: function(){
         if ( interval.curr >= ($this.length - 1) ) interval.curr = -1;
+        if ( interval.curr < -1 ) interval.curr = $this.length - 1;
+      }
 
+    , _tick : function(){
+        interval.cycleCurr();
+        options.onTickBefore( interval );
         interval.next();
         interval.setTick();
       }
