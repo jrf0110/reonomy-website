@@ -4,25 +4,30 @@
 
 h1, h2, h4, h5 {
   text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 h2 {
   margin-bottom: 18px;
   font-size: 3.0em;
   line-height: 1.2em;
-  color: @off-gray;
   font-weight: 300;
+  color: @off-gray;
 }
 
 h3 {
   font-family: @font-family-serif;
 }
 
-h1 + .lead, h2 + .lead,
-h3 + .lead, h4 + .lead {
+.lead {
   font-size: 1.6em;
-  color: @gray;
+  line-height: 1.6em;
   letter-spacing: 1.2px;
+}
+
+.lead-paragraph {
+  font-size: 1.3em;
+  line-height: 1.8em;
 }
 
 .header-separator {
@@ -41,4 +46,9 @@ h3 + .lead, h4 + .lead {
   margin-top: -28px;
   border: none;
   border-bottom: solid 1px #D1D1D1;
+}
+
+em.em-primary {
+  font-style: normal;
+  color: @brand-primary;
 }

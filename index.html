@@ -25,6 +25,7 @@
     <script src="/js/components/component.active-interval.js"></script>
     <script src="/js/components/component.navbar.js"></script>
     <script src="/js/components/component.photo-viewer.js"></script>
+    <script src="/js/init-login.js"></script>
 
     <script>
       var config = {
@@ -41,7 +42,6 @@
         , '.btn-request-demo'
         ].join(', ')).click( function( e ){
           if ( $(this).hasClass('btn-request-demo') ){
-            console.log("heyo")
             $('#contact-subject').val('Request a Demo');
           } else {
             $('#contact-subject').val('');
@@ -66,16 +66,10 @@
         });
 
         aboutRotator.start();
-
-        $('.login-toggle').click( function( e ){
-          e.preventDefault();
-          $('.login-wrapper').toggleClass('active');
-          $(this).parents('li').eq(0).toggleClass('active');
-        });
       });
     </script>
   </head>
-  <body>
+  <body class="page-home">
     <!--<Navbar>-->
     <header class="navbar collapsed hide-demo-btn">
       <div class="container">
@@ -303,7 +297,7 @@
         <img class="footer-logo" src="/img/reonomy-logo.png" alt="Reonomy">
 
         <ul class="nav">
-          <li class="active"><a href="team.html">Team</a></li>
+          <li><a href="team.html">Team</a></li>
           <li><a href="product.html">Product</a></li>
           <li><a href="careers.html">Careers</a></li>
           <li><a href="#contact">Contact</a></li>

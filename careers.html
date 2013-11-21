@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Reonomy - Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reonomy Description" />
+
+    <!--[if lt IE 9]>
+    <script src="/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/colorbox/example1/colorbox.css">
+    <link rel="stylesheet" href="/css/core.gen.css">
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/css/ielt9.gen.css">
+    <![endif]-->
+
+    <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/jquery-waypoints/waypoints.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+    <script src="/bower_components/colorbox/jquery.colorbox.js"></script>
+
+    <script src="/js/components/component.active-interval.js"></script>
+    <script src="/js/components/component.navbar.js"></script>
+    <script src="/js/components/component.photo-viewer.js"></script>
+    <script src="/js/init-login.js"></script>
+
+    <script>
+      var config = {
+        colorBoxOptions: {
+          inline: true
+        , width: '50%'
+        , href: '#contact'
+        }
+      };
+
+      $(function(){
+        $([
+          '[href="#contact"]'
+        , '.btn-request-demo'
+        ].join(', ')).click( function( e ){
+          if ( $(this).hasClass('btn-request-demo') ){
+            $('#contact-subject').val('Request a Demo');
+          } else {
+            $('#contact-subject').val('');
+          }
+
+          $.colorbox( config.colorBoxOptions )
+        });
+
+        $('.navbar').navbar().start();
+        $('.text-rotator li').activeInterval({ interval: 5000 }).start();
+        $('.photo-viewer').photoViewer({ scrollMode: false });
+
+        var aboutRotator = $('.section-about article').activeInterval({
+          interval: 5000
+        });
+
+        $('.section-about .next').click( function( e ){
+          e.preventDefault();
+          aboutRotator.stop();
+          aboutRotator.next();
+          aboutRotator.setTick();
+        });
+
+        aboutRotator.start();
+      });
+    </script>
+  </head>
+  <body class="page-careers">
+    <!--<Navbar>-->
+    <header class="navbar collapsed hide-demo-btn">
+      <div class="container">
+        <a href="/">
+          <img class="navbar-logo" src="/img/reonomy-logo.png" alt="Reonomy">
+        </a>
+
+        <ul class="nav">
+          <li><a href="company.html">Company</a></li>
+          <li><a href="careers.html" class="active">Careers</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" class="login-toggle">Login</a></li>
+          <li>
+            <button class="btn btn-tertiary btn-request-demo" data-icon="laptop">Request a Demo</button>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!--</Navbar>-->
+
+    <!--<Login>-->
+    <div class="login-wrapper">
+      <div class="login-box">
+        <form class="form-inline login-form">
+          <input type="email" placeholder="Email">
+          <input type="password" placeholder="Password">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+        <div class="forgot-password">
+          
+        </div>
+      </div>
+    </div>
+    <!--</Login>-->
+
+    <!--<HeroUnit>-->
+    <div class="hero-unit">
+      <h1>At Reonomy<br>we are<br><em class="em-primary">collaborative</em></h1>
+
+      <a href="#open-positions" class="btn btn-large btn-default btn-call-to-action">View Open Positions</a>
+    </div>
+    <!--</HeroUnit>-->
+
+    <section class="page-section section-why-work">
+      <div class="container">
+        <h2 class="section-header">Why work with Reonomy?</h2>
+        <p class="lead-paragraph">Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions, Reonomy is truly redefining how CRE finance decisions are made. Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions, Reonomy is truly redefining how CRE finance decisions are made.</p>
+      </div>
+    </section>
+
+    <section class="page-section section-primary section-values">
+      <div class="container">
+        <h2 class="section-header">A few of our values</h2>
+        <div class="values">
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+          <article class="value">
+            <h4 class="value-header">This is a value</h4>
+            <p class="value-text">Put a few sentences here about the value. This area can be expanded to two, or three sentences</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--<Footer>-->
+    <footer class="footer">
+      <div class="container">
+        <img class="footer-logo" src="/img/reonomy-logo.png" alt="Reonomy">
+
+        <ul class="nav">
+          <li class="active"><a href="team.html">Team</a></li>
+          <li><a href="product.html">Product</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="copyright">&copy; Reonomy 2013 all rights reserved</div>
+      </div>
+    </footer>
+    <!--</Footer>-->
+
+    <div id="modals">
+      <div id="contact">
+        <h2>Contact</h2>
+        <form>
+          <fieldset>
+            <div class="field-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name">
+            </div>
+            <div class="field-group">
+              <label for="contact-company">Company</label>
+              <input type="text" id="contact-company" name="company">
+            </div>
+            <div class="field-group">
+              <label for="contact-email">Email</label>
+              <input type="text" id="contact-email" name="email">
+            </div>
+            <div class="field-group">
+              <label for="contact-phone">Phone</label>
+              <input type="text" id="contact-phone" name="phone">
+            </div>
+            <div class="field-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject">
+            </div>
+            <div class="field-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message"></textarea>
+            </div>
+            <div class="field-group">
+              <button type="submit" class="btn btn-tertiary">Send</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
