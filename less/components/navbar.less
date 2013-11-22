@@ -80,7 +80,7 @@ body {
 
 // Once the container relies on width: 100% add standard padding
 @media (max-width: @container-width) {
-  .navbar {
+  .navbar .container {
     .standard-padding();
   }
 }
@@ -97,8 +97,11 @@ body {
     padding-top: @navbar-mobile-height - 1;
   }
 
-  .navbar {
+  .navbar .container {
     .standard-padding();
+  }
+
+  .navbar {
     min-height: @navbar-mobile-height;
     padding-bottom: 16px;
   }

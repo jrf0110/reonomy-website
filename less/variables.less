@@ -20,6 +20,15 @@
 , blue( @brand-tertiary ) - 6
 );
 
+@off-gray-primary: rgb(
+  red( @brand-primary ) + 88
+, green( @brand-primary ) - 54
+, blue( @brand-primary )
+);
+
+// TODO: derive this value
+@off-gray-secondary: @off-gray;
+
 @body-bg-color:             #ffffff;
 
 
@@ -27,6 +36,10 @@
 ////////////////////////////////////////////////////
 @font-family-serif:         'Soho';
 @font-family-sans-serif:    'Soho Gothic';
+// For some reason, I'm not able to use soho gothic
+// font-weight: 300; font-style: italic
+// Only after creating a whole font family does it work
+@font-family-light:         'Soho Gothic Light';
 
 @font-family-base:          @font-family-sans-serif;
 @font-weight-base:          300;
@@ -57,9 +70,9 @@
 @btn-padding-bottom-base:   @btn-padding-top-base - 1;
 @btn-padding-left-base:     @btn-padding-right-base;
 
-@btn-padding-top-large:     14px;
+@btn-padding-top-large:     15px;
 @btn-padding-right-large:   26px;
-@btn-padding-bottom-large:  13px;
+@btn-padding-bottom-large:  @btn-padding-top-large - 2;
 @btn-padding-left-large:    @btn-padding-right-large;
 
 @btn-border-width-base:     3px;
