@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>Reonomy - Careers</title>
+    <title>Reonomy - Company</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reonomy Description" />
@@ -41,22 +41,31 @@
           '[href="#contact"]'
         , '.btn-request-demo'
         ].join(', ')).click( function( e ){
-          e.preventDefault();
-
-          var $this = $(this), contactSelector = '#contact-subject';
-
-          if ( $this.hasClass('btn-request-demo') ){
-            $( contactSelector ).val('Request a Demo');
-          } else if ( $this.data('position') ){
-            $( contactSelector ).val( 'Re: ' + $this.data('position') );
+          if ( $(this).hasClass('btn-request-demo') ){
+            $('#contact-subject').val('Request a Demo');
           } else {
-            $( contactSelector ).val('');
+            $('#contact-subject').val('');
           }
 
           $.colorbox( config.colorBoxOptions )
         });
 
         $('.navbar').navbar().start();
+        $('.text-rotator li').activeInterval({ interval: 5000 }).start();
+        $('.photo-viewer').photoViewer({ scrollMode: false });
+
+        var aboutRotator = $('.section-about article').activeInterval({
+          interval: 5000
+        });
+
+        $('.section-about .next').click( function( e ){
+          e.preventDefault();
+          aboutRotator.stop();
+          aboutRotator.next();
+          aboutRotator.setTick();
+        });
+
+        aboutRotator.start();
       });
     </script>
   </head>
@@ -170,22 +179,22 @@
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus">Apply for position</a>
           </div>
         </div>
         <!--</PositionsList>-->
