@@ -1,0 +1,67 @@
+////////////////
+// Perks List //
+////////////////
+
+.perks-list {
+  list-style: none;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.perks-list > .perk {
+  display: table-cell;
+  width: 2%;
+  padding: 20px;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  text-align: center;
+
+  &:before {
+    content: "";
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+  }
+}
+
+.perk-icon( @perk ) when ( @perk = 'healthcare' ){
+  .perk-icon('icon-stethoscope');
+}
+
+.perk-icon( @perk ) when ( @perk = 'lunch' ){
+  .perk-icon('icon-fork-knife');
+}
+
+.perk-icon( @perk ) when ( @perk = 'setup' ){
+  .perk-icon('icon-display');
+}
+
+.perk-icon( @perk ) when ( @perk = 'music' ){
+  .perk-icon('icon-eighth-notes');
+}
+
+.perk-icon( @perk ) when ( @perk = 'citibike' ){
+  .perk-icon('icon-bicycle');
+}
+
+.perk-icon( @perk ) when ( @perk = 'snacks' ){
+  .perk-icon('icon-pretzel');
+}
+
+.perk-icon( @icon ){
+  &:before {
+    .sprite( @icon );
+  }
+}
+
+.perk-healthcare  { .perk-icon('healthcare'); }
+.perk-lunch       { .perk-icon('lunch'); }
+.perk-setup       { .perk-icon('setup'); }
+.perk-music       { .perk-icon('music'); }
+.perk-citibike    { .perk-icon('citibike'); }
+.perk-snacks      { .perk-icon('snacks'); }
