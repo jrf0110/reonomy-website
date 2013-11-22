@@ -36,6 +36,31 @@
         }
       };
 
+      var openModal = function( subject ){
+        $('#contact-subject').val( subject || '' );
+        $.colorbox( config.colorBoxOptions );
+      };
+
+      var checkHash = function(){
+        // Build positions array based on DOM
+        var positions = [];
+        $('[data-position]').each( function(){
+          positions.push( $(this).data('position') );
+        });
+
+        // Check hash for matching position
+        // If there's a match, open the modal
+        var hash = window.location.hash.substring(1).trim();
+
+        // Remove leading/trailing slashes
+        if ( hash[0] === '/' ) hash = hash.substring(1);
+        if ( hash.slice(-1) === '/' ) hash = hash.substring( 0, hash.length - 1 );
+
+        if ( positions.indexOf( hash ) > -1 ){
+          openModal( 'Re: ' + positions[ positions.indexOf( hash ) ]);
+        }
+      };
+
       $(function(){
         $([
           '[href="#contact"]'
@@ -43,20 +68,20 @@
         ].join(', ')).click( function( e ){
           e.preventDefault();
 
-          var $this = $(this), contactSelector = '#contact-subject';
+          var $this = $(this);
 
           if ( $this.hasClass('btn-request-demo') ){
-            $( contactSelector ).val('Request a Demo');
+            openModal('Request a Demo');
           } else if ( $this.data('position') ){
-            $( contactSelector ).val( 'Re: ' + $this.data('position') );
+            openModal( 'Re: ' + $this.data('position') );
           } else {
-            $( contactSelector ).val('');
+            openModal();
           }
-
-          $.colorbox( config.colorBoxOptions )
         });
 
         $('.navbar').navbar().start();
+
+        checkHash();
       });
     </script>
   </head>
@@ -170,22 +195,22 @@
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-icon="plus" data-position="Data Scientist">Apply for position</a>
+            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
           </div>
         </div>
         <!--</PositionsList>-->
