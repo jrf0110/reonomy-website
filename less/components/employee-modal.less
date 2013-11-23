@@ -1,0 +1,115 @@
+////////////////////
+// Employee Modal //
+////////////////////
+
+@photo-wrapper-width: 44%;
+@photo-wrapper-margin: 50px;
+
+.employee-modal {
+  #sections > .brand-primary();
+  #grid > .row();
+  display: block;
+  position: fixed;
+  top: -20000px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: @navbar-height;
+  .opacity(0);
+  .transition( ease-out, 0.4s );
+  .transition-property( opacity );
+  text-align: left;
+  z-index: 100;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      padding-top: @navbar-mobile-height;
+      .standard-padding();
+      text-shadow: 0 1px 0 rgba( 0, 0, 0, 0.33 );
+    }
+  }
+}
+
+.employee-modal.show {
+  top: 0;
+  .opacity(1);
+}
+
+.employee-modal.show ~ .footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 101;
+  width: 100%;
+}
+
+.employee-modal .close-handle {
+  position: absolute;
+  right: 20px;
+  top: @navbar-height + 20px;
+  font-size: 34px;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      top: @navbar-mobile-height + 20px;
+    }
+  }
+}
+
+.employee-modal .photo-wrapper {
+  float: left;
+  width: @photo-wrapper-width;
+  height: 100%;
+  margin-right: @photo-wrapper-margin;
+  overflow: hidden;
+  background-size: cover;
+  background-position-x: center;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      width: 100%;
+      position: absolute;
+      .opacity(0.1);
+      z-index: -1;
+    }
+  }
+}
+
+.employee-modal .employee-photo {
+  height: 100%;
+  width: auto;
+  .opacity(0);
+}
+
+.employee-modal .employee-name {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.employee-modal .employee-title {
+  font-family: @font-family-light;
+  font-style: italic;
+  color: @primary-dark-color;
+}
+
+.employee-modal .employee-bio {
+  position: absolute;
+  left: @photo-wrapper-width;
+  bottom: 60px;
+  width: 420px;
+  margin-left: @photo-wrapper-margin;
+  font-size: 16px;
+  line-height: 30px;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      width: 100%;
+      position: static;
+      margin-left: 0;
+    }
+  }
+}

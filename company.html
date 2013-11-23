@@ -22,9 +22,8 @@
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/colorbox/jquery.colorbox.js"></script>
 
-    <script src="/js/components/component.active-interval.js"></script>
     <script src="/js/components/component.navbar.js"></script>
-    <script src="/js/components/component.photo-viewer.js"></script>
+    <script src="/js/components/component.employee-modal.js"></script>
     <script src="/js/init-login.js"></script>
 
     <script>
@@ -77,21 +76,8 @@
         });
 
         $('.navbar').navbar().start();
-        $('.text-rotator li').activeInterval({ interval: 5000 }).start();
-        $('.photo-viewer').photoViewer({ scrollMode: false });
-
-        var aboutRotator = $('.section-about article').activeInterval({
-          interval: 5000
-        });
-
-        $('.section-about .next').click( function( e ){
-          e.preventDefault();
-          aboutRotator.stop();
-          aboutRotator.next();
-          aboutRotator.setTick();
-        });
-
-        aboutRotator.start();
+        
+        $('.employees > .employee').employeeModal();
       });
     </script>
   </head>
@@ -139,9 +125,13 @@
       </div>
     </section>
 
+    <!--<EmployeeModal>-->
+    <div class="employee-modal"></div>
+    <!--</EmployeeModal>-->
+
     <!--<CompanySection>-->
     <section class="page-section section-company">
-      <div class="container">
+      <div class="container employees">
         <div class="block block-main">
           <div class="content-wrapper">
             <h1 class="section-header">Our Company</h1>
@@ -153,59 +143,67 @@
         
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
         <div class="block employee">
           <div class="photo-wrapper">
-            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+            <img class="employee-photo" data-large-photo="/img/harlan-photo-lg.jpg" src="/img/harlan-headshot.png" alt="Harlan Milkove">
           </div>
           <h4 class="employee-name">Harlan Milkove</h4>
           <div class="employee-title">Chief Technology Guy</div>
+          <p class="employee-bio">Harlan is a co-Founder and VP of Engineering at Reonomy. Harlan has over ten years experience as a software engineer at IBM, GE, and WorkMarket, including 5 years at FactSet Research Systems. Harlan's most recent experience is that of a Technical Lead developing both back-end systems for parsing data, data warehousing, and designing/developing analytics. Harlan graduated Cum Laude from Rensselaer Polytechnic Institute, where Harlan developed graph theory research applications.</p>
         </div>
       </div>
     </section>
@@ -223,6 +221,12 @@
           </ul>
         </div>
       </div>
+    </section>
+
+    <section class="page-section section-secondary section-contact">
+      <h2 class="section-header">Contact Us</h2>
+      <p class="lead">for objective, data-backed insights.</p>
+      <button class="btn btn-default btn-large" data-icon="mail">Send a Message</button>
     </section>
 
     <footer class="footer">

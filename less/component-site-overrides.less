@@ -2,6 +2,21 @@
 // Component->Site Overrides //
 ///////////////////////////////
 
+.section-contact {
+  font-size: 1.1em;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.section-contact .section-header {
+  font-size: 3.8em;
+}
+
+.section-contact .lead {
+  margin-top: -10px;
+  margin-bottom: 42px;
+}
+
 // This file is for overriding the behavior of components
 // To specifically match something in the design
 
@@ -36,21 +51,6 @@
   .section-testimonials .section-header {
     margin-top: 20px;
     margin-bottom: 100px;
-  }
-
-  .section-contact {
-    font-size: 1.1em;
-    padding-top: 30px;
-    padding-bottom: 60px;
-  }
-
-  .section-contact .section-header {
-    font-size: 3.8em;
-  }
-
-  .section-contact .lead {
-    margin-top: -10px;
-    margin-bottom: 42px;
   }
 }
 // End Home page
@@ -109,6 +109,17 @@
     padding-bottom: 50px;
   }
 
+  .section-vision > .container {
+    padding-left: 80px;
+    padding-right: 80px;
+
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        .standard-padding();
+      }
+    }
+  }
+
   .section-vision:before {
     .sprite('lattice-green-1');
     content: "";
@@ -140,11 +151,19 @@
   }
 
   .section-company .container {
-    // width: auto;
-    // min-width: @container-width - 200;
-    // max-width: @container-width + 400; 
+    width: auto;
+    min-width: @container-width - 200;
+    max-width: @container-width + 400;
     padding-left: 0;
     padding-right: 0;
+
+    @media screen and (max-width: @breakpoint-tablet) {
+      & {
+        width: 100%;
+        min-width: initial;
+        max-width: initial;
+      }
+    }
   }
 
   .section-investors {
