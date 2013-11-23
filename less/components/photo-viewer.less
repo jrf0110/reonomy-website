@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.photo-viewer .photo-nav {
+.photo-viewer .photo-viewer .photo-nav {
   position: absolute;
   top: 100px;
   right: 0;
@@ -29,7 +29,7 @@
   width: @indicator-size;
 }
 
-.photo-nav li {
+.photo-viewer .photo-nav li {
   position: relative;
   right: 0;
   width: @indicator-size;
@@ -41,11 +41,11 @@
   list-style-type: none;
 }
 
-.photo-nav li:first-child {
+.photo-viewer .photo-nav li:first-child {
   margin-top: 0;
 }
 
-.photo-nav li:after {
+.photo-viewer .photo-nav li:after {
   content: " ";
   position: absolute;
   right: 0;
@@ -57,12 +57,12 @@
   background-color: @indicator-bg;
 }
 
-.photo-nav li img {
+.photo-viewer .photo-nav li img {
   padding: 6px 16px 10px;
   background-color: @thumbnail-bg;
 }
 
-.photo-nav .photo-title {
+.photo-viewer .photo-nav .photo-title {
   // Sufficiently hide content
   margin-top: 100px;
 
@@ -77,8 +77,8 @@
   line-height: 12px;
 }
 
-.photo-nav li.active,
-.photo-nav li:hover {
+.photo-viewer .photo-nav li.active,
+.photo-viewer .photo-nav li:hover {
   .sprite('triangle');
   width: @thumbnail-width + @indicator-size + @indicator-spacing;
   overflow: visible;
@@ -86,22 +86,22 @@
 }
 
 // make li:hover z-index higher than active
-.photo-nav li:hover {
+.photo-viewer .photo-nav li:hover {
   z-index: 2;
 }
 
-.photo-nav li.active .photo-title,
-.photo-nav li:hover .photo-title {
+.photo-viewer .photo-nav li.active .photo-title,
+.photo-viewer .photo-nav li:hover .photo-title {
   margin-top: -62px;
 }
 
-.photo-nav li.active:after,
-.photo-nav li:hover:after {
+.photo-viewer .photo-nav li.active:after,
+.photo-viewer .photo-nav li:hover:after {
   background-color: @indicator-bg-active;
   margin-left: @indicator-spacing;
 }
 
-.photo-wrapper {
+.photo-viewer .photo-wrapper {
   display: inline-block;
   box-sizing: content-box;
   min-width: 789px;
@@ -109,14 +109,14 @@
   margin-right: 60px;
 }
 
-.photo-wrapper:before {
+.photo-viewer .photo-wrapper:before {
   .sprite('screenshot-chrome');
   content: "";
   display: block;
   height: @chrome-height;
 }
 
-.photo-wrapper:after {
+.photo-viewer .photo-wrapper:after {
   @extra-space: 20px;
 
   .sprite('screenshot-shadow');
@@ -129,7 +129,7 @@
   margin-right: -@extra-space;;
 }
 
-.photo-wrapper > .photo {
+.photo-viewer .photo-wrapper > .photo {
   position: absolute;
   top: @chrome-height;
   left: 0;
@@ -138,16 +138,16 @@
   .transition( 0.4s, ease-in-out );
 }
 
-.photo-wrapper > .photo.active {
+.photo-viewer .photo-wrapper > .photo.active {
   position: absolute;
   .opacity(1);
 }
 
-.photo-wrapper > .active-static {
+.photo-viewer .photo-wrapper > .active-static {
   display: none;
   visibility: hidden;
 }
 
-.photo-wrapper > .photo.active + .active-static {
+.photo-viewer .photo-wrapper > .photo.active + .active-static {
   display: block;
 }

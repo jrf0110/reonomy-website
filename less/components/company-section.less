@@ -1,0 +1,101 @@
+/////////////////////
+// Company Section //
+/////////////////////
+
+.section-company {
+  #grid > .row();
+}
+
+.section-company .block {
+  float: left;
+  width: 25%;
+  text-align: left;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    width: 100%;
+  }
+}
+
+.section-company .block.employee {
+  background: @white;
+  cursor: pointer;
+}
+
+.section-company .block.block-main {
+  width: 50%;
+  color: @off-gray-primary;
+  padding-top: 60px;
+  line-height: 2em;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    width: 100%;
+    .standard-padding();
+  }
+}
+
+.block-main .content-wrapper {
+  width: 410px;
+  margin: 0 auto;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}
+
+.section-company .photo-wrapper {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.section-company .block img {
+  width: 100%;
+}
+
+.section-company .photo-wrapper:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: =1000px;
+  left: 0;
+  background: @brand-primary;
+  z-index: 2;
+
+  opacity: 0;
+
+  .transition( 0.2s, linear );
+  .transition-property( opacity );
+}
+
+.section-company .block:hover .photo-wrapper:before {
+  top: 0;
+  opacity: 0.33333;
+}
+
+.section-company .employee-name,
+.section-company .employee-title {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.section-company .employee-name {
+  margin-top: 16px;
+  margin-bottom: 2px;
+  color: @off-gray;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.section-company .employee-title {
+  padding-left: 8px;
+  padding-bottom: 12px;
+  font-family: 'Soho Gothic Light';
+  font-style: italic;
+}

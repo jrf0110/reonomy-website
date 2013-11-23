@@ -104,8 +104,66 @@
 
 // Company page
 .page-company {
-  .hero-unit {
-    background-image: url('/img/hero-unit-bg-secondary.png');
+  .section-vision {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  .section-vision:before {
+    .sprite('lattice-green-1');
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .section-vision:after {
+    .sprite('lattice-green-2');
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .transition( ease-in, 0.5s );
+
+    @media screen and (max-width: @breakpoint-tablet) {
+      & {
+        opacity: 0;
+      }
+    }
+  }
+
+  .section-company {
+    background: #F1F5F6;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .section-company .container {
+    // width: auto;
+    // min-width: @container-width - 200;
+    // max-width: @container-width + 400; 
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-investors {
+    padding-top: 40px;
+    background-color: #E9EDED;
+  }
+
+  .section-investors .section-header {
+    margin-bottom: 10px;
+  }
+
+  .section-investors p {
+    display: inline-block;
+    width: 82%;
+    line-height: 2em;
+  }
+
+  .investors-list {
+    margin: 16px 0 24px;
   }
 }
 // End Company page

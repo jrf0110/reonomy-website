@@ -34,9 +34,35 @@
         , width: '50%'
         , href: '#contact'
         }
+
+      , breakpointTablet: 786
+
+      , mainBlockHeightOffset: -2
       };
 
       $(function(){
+        var $window = $(window);
+        var $mainBlock = $('.block-main');
+        var $firstBlock = $mainBlock.find('+ .block');
+
+        var setMainBlockHeight = function(){
+          var height
+
+          if ( $window.width() <= config.breakpointTablet ){
+            height = 'auto'
+          } else {
+            height = ($firstBlock.height() * 2) + config.mainBlockHeightOffset + 'px';
+          }
+
+          $mainBlock.css( 'height', height );
+        };
+
+        $(window).resize( _.throttle( function(){
+          setMainBlockHeight();
+        }, 50 ));
+
+        setTimeout( setMainBlockHeight, 500 );
+
         $([
           '[href="#contact"]'
         , '.btn-request-demo'
@@ -69,7 +95,7 @@
       });
     </script>
   </head>
-  <body class="page-careers">
+  <body class="page-company">
     <!--<Navbar>-->
     <header class="navbar collapsed hide-demo-btn">
       <div class="container">
@@ -106,22 +132,106 @@
     </div>
     <!--</Login>-->
 
-    <!--<HeroUnit>-->
-    <div class="hero-unit">
-      <h1>At Reonomy<br>we are<br><em class="em-primary">collaborative</em></h1>
+    <section class="page-section section-vision section-primary">
+      <div class="container">
+        <h2 class="section-header">Our Vision</h2>
+        <p class="lead">Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions, Reonomy is truly redefining how CRE finance decisions are made. Whether it be investments, loans, research, valuation or a host of other functions, Reonomy is truly redefining how CRE finance decisions are made.</p>
+      </div>
+    </section>
 
-      <a href="#open-positions" class="btn btn-large btn-default btn-call-to-action">View Open Positions</a>
-    </div>
-    <!--</HeroUnit>-->
+    <!--<CompanySection>-->
+    <section class="page-section section-company">
+      <div class="container">
+        <div class="block block-main">
+          <div class="content-wrapper">
+            <h1 class="section-header">Our Company</h1>
+            <p>Reonomy, it's investors, and it's users are at the forefront of CRE analysis. Our passion is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions.</p>
+            
+            <p>Reonomy is truly redefining how CRE finance decisions are made. (This should be a bunch of sentences about your company) Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions</p>
+          </div>
+        </div>
+        
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+        <div class="block employee">
+          <div class="photo-wrapper">
+            <img class="employee-photo" src="/img/harlan-headshot.png" alt="Harlan Milkove">
+          </div>
+          <h4 class="employee-name">Harlan Milkove</h4>
+          <div class="employee-title">Chief Technology Guy</div>
+        </div>
+      </div>
+    </section>
+    <!--</CompanySection>-->
+
+    <section class="page-section section-gray section-investors">
+      <div class="container">
+        <h2 class="section-header">Our Investors</h2>
+        <p>Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans, research, valuation or a host of other functions, Reonomy is truly redefining how CRE finance decisions are made. (This should be a bunch of sentences about your company) Reonomy is creating a platform to bring clarity and insight into this previously opaque space. Whether it be investments, loans or research.</p>
+        <div class="investors-list img-list">
+          <ul>
+            <li><img src="/img/kec-holdings.png" alt="KEC Holdings"></li>
+            <li><img src="/img/high-peaks.png" alt="High Peaks Venture Partners"></li>
+            <li><img src="/img/resolute-vc.png" alt="Resolute VC"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="container">
         <img class="footer-logo" src="/img/reonomy-logo.png" alt="Reonomy">
 
         <ul class="nav">
-          <li><a href="team.html">Team</a></li>
-          <li><a href="product.html">Product</a></li>
-          <li class="active"><a href="careers.html">Careers</a></li>
+          <li class="active"><a href="company.html">Company</a></li>
+          <li><a href="careers.html">Careers</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="copyright">&copy; Reonomy 2013 all rights reserved</div>

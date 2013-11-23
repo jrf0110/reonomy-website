@@ -2,11 +2,34 @@
 // Page Section //
 //////////////////
 
+
+// TODO:
+// Fix this .page-section font-size 1em issue.
+// I think we should bump the base-font size and
+// adjust everything accordingly
+
 .page-section {
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
   font-size: 1em;
+}
+
+.page-section .section-header {
+  margin-bottom: 18px;
+  font-size: 3.0em;
+  line-height: 1.2em;
+  letter-spacing: 1.2px;
+  font-weight: 300;
+  color: @off-gray;
+}
+
+.page-section p {
+  font-size: 1.2em;
+}
+
+.page-section p.lead {
+  font-size: 1.6em;
 }
 
 .page-section > .container {
@@ -29,4 +52,13 @@
 
 .page-section.section-primary {
   #sections > .brand-primary();
+}
+
+.page-section.section-vision {
+  
+}
+
+.page-section.section-vision .lead {
+  // TODO: derive this value from theme
+  color: #224338;
 }
