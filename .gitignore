@@ -4,3 +4,4 @@ node_modules/
 jam/
 bower_components/
 css/*.gen.css
+.htpasswd
