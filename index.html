@@ -54,8 +54,11 @@
 
         $('.navbar').navbar().start();
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
-        var photoViewer = $('.photo-viewer').photoViewer({ scrollMode: true });
-        // photoViewer.stop();
+        var photoViewer = $('.photo-viewer').photoViewer({
+          scrollMode: true
+        });
+
+        photoViewer.go(1);
 
         var aboutRotator = $('.section-about article').activeInterval({
           interval: 5000
