@@ -10,6 +10,14 @@
   #sections > .dark();
   height: @footer-height;
   padding-top: 10px;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      height: auto;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+  }
 }
 
 .footer .container {
@@ -19,6 +27,12 @@
 .footer .nav {
   float: right;
   margin-top: 20px;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      display: none;
+    }
+  }
 }
 
 .footer .nav .active a {
@@ -34,4 +48,16 @@
   text-transform: uppercase;
   color: darken( @footer-color, 30% );
   color: rgba( 255, 255, 255, 0.7 );
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      position: static;
+    }
+  }
+}
+
+@media screen and (max-width: @breakpoint-tablet){
+  .footer-logo {
+    max-height: @navbar-mobile-height;
+  }
 }

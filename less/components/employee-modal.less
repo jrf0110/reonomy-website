@@ -26,6 +26,7 @@
       padding-top: @navbar-mobile-height;
       .standard-padding();
       text-shadow: 0 1px 0 rgba( 0, 0, 0, 0.33 );
+      overflow-y: scroll;
     }
   }
 }
@@ -54,6 +55,7 @@
   @media screen and (max-width: @breakpoint-tablet){
     & {
       top: @navbar-mobile-height + 20px;
+      right: 10px;
     }
   }
 }
@@ -88,12 +90,24 @@
   line-height: 44px;
   font-weight: 300;
   margin-bottom: 0;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      font-size: 32px;
+    }
+  }
 }
 
 .employee-modal .employee-title {
   font-family: @font-family-light;
   font-style: italic;
   color: @primary-dark-color;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      text-shadow: none;
+    }
+  }
 }
 
 .employee-modal .employee-bio {
@@ -110,6 +124,7 @@
       width: 100%;
       position: static;
       margin-left: 0;
+      line-height: 26px;
     }
   }
 }

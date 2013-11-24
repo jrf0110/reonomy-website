@@ -28,6 +28,12 @@
   list-style: none;
   width: @indicator-size;
   z-index: @photo-nav-zindex;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      display: none;
+    }
+  }
 }
 
 .photo-viewer .photo-nav li {
@@ -108,6 +114,14 @@
   min-width: 789px;
   // Size of screenshot `chrome`
   margin-right: 60px;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      display: block;
+      margin-right: 0;
+      min-width: initial;
+    }
+  }
 }
 
 .photo-viewer .photo-wrapper:before {
@@ -115,6 +129,12 @@
   content: "";
   display: block;
   height: @chrome-height;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      display: none;
+    }
+  }
 }
 
 .photo-viewer .photo-wrapper:after {
@@ -128,6 +148,12 @@
   padding: 0 @extra-space;
   margin-left: -@extra-space;;
   margin-right: -@extra-space;;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      display: none;
+    }
+  }
 }
 
 .photo-viewer .photo-wrapper > .photo {

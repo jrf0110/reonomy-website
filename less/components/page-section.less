@@ -13,6 +13,12 @@
   padding-bottom: 20px;
   text-align: center;
   font-size: 1em;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      
+    }
+  }
 }
 
 .page-section .section-header {
@@ -22,14 +28,32 @@
   letter-spacing: 1.2px;
   font-weight: 300;
   color: @off-gray;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      font-size: 1.6em;
+    }
+  }
 }
 
 .page-section p {
   font-size: 1.2em;
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      font-size: 1em;
+    }
+  }
+
 }
 
 .page-section p.lead {
   font-size: 1.6em;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      font-size: 1.2em;
+    }
+  }
 }
 
 .page-section > .container {

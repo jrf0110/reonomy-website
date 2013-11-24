@@ -88,7 +88,7 @@ body {
 
 // Make the navbar not so tall on mobile
 // Adjust breakpoint to account for nav items
-@media screen and (max-width: (@breakpoint-mobile + 212px)) {
+@media screen and (max-width: (@breakpoint-tablet)) {
   @anchor-padding-top: (@navbar-mobile-height / 2) + @anchor-padding-offset;
   @anchor-padding-bottom: (@navbar-mobile-height / 2) - @anchor-padding-offset;
 
@@ -127,6 +127,7 @@ body {
   }
 
   .navbar .navbar-logo {
+    max-width: 98px;
     max-height: @navbar-mobile-height;
   }
 

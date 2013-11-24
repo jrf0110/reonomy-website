@@ -6,10 +6,21 @@
   font-size: 1.1em;
   padding-top: 30px;
   padding-bottom: 60px;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      font-size: 1em;
+    }
+  }
 }
 
 .section-contact .section-header {
   font-size: 3.8em;
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      font-size: 2em;
+    }
+  }
 }
 
 .section-contact .lead {
@@ -74,11 +85,23 @@
     padding-left: 42px;
     padding-right: 42px;
     color: #fff;
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
   }
 
   .section-why-work > .container {
     padding-left: 100px;
     padding-right: 100px;
+
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        .standard-padding();
+      }
+    }
   }
 
   .section-perks {
@@ -100,6 +123,12 @@
   .section-positions .container {
     padding-left: 60px;
     padding-right: 60px;
+
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        .standard-padding();
+      }
+    }
   }
 
   .positions-list .position {
@@ -107,6 +136,14 @@
     width: 46%;
     margin-left: 2%;
     margin-right: 2%;
+
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 }
 // End Careers page
@@ -188,6 +225,12 @@
     display: inline-block;
     width: 82%;
     line-height: 2em;
+
+    @media screen and (max-width: @breakpoint-tablet){
+      & {
+        width: 100%;
+      }
+    }
   }
 
   .investors-list {
