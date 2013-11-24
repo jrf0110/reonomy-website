@@ -2,7 +2,40 @@
 // Forms //
 ///////////
 
+@label-width: 100px;
+@border-color-base: lighten( desaturate( @off-gray, 32% ), 34%);
+
+input, textarea {
+  padding-top: @btn-padding-top-base;
+  padding-right: @btn-padding-right-base;
+  padding-bottom: @btn-padding-bottom-base;
+  padding-left: @btn-padding-left-base;
+  border: solid @border-color-base @btn-border-width-base;
+  vertical-align: middle;
+  line-height: @line-height-small;
+}
+
 .form-vertical label {
   display: inline-block;
-  width: 100px;
+  width: @label-width;
+}
+
+.form .btn {
+  vertical-align: middle;
+}
+
+.form-inline input, .form-inline .btn {
+  vertical-align: top;
+}
+
+.form-vertical .field-group {
+  margin-top: 12px;
+}
+
+.form-vertical .field-group:first-child {
+  margin-top: 0;
+}
+
+.form-vertical .field-group .btn[type="submit"] {
+  margin-left: @label-width + @btn-border-width-base;
 }

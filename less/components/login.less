@@ -3,14 +3,13 @@
 ///////////
 
 .login-wrapper {
-  #grid > .container();
-
   position: fixed;
   top: -@navbar-height;
   z-index: @login-zindex;
+  width: 100%;
 
   .opacity( 0 );
-  .transition( ease-in-out, 0.5s );
+  .transition( ease-out, 0.5s );
 }
 
 .login-wrapper.active {
@@ -18,11 +17,23 @@
   .opacity( 1 );
 }
 
-.login-wrapper > .login-box {
+.login-wrapper .login-box {
   #sections > .brand-secondary();
   float: right;
-  width: 400px;
+  // width: 400px;
   height: 100%;
   padding-top: 20px;
+  padding-bottom: 8px;
   .standard-padding();
+}
+
+.login-box .forgot-password {
+  margin-top: 6px;
+  font-size: 0.8em;
+  text-align: right;
+}
+
+.login-box input {
+  border-color: #fff;
+  // background: rgba(25)
 }
