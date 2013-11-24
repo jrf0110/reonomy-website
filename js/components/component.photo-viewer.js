@@ -46,6 +46,11 @@
       });
     });
 
+    $holder.click( function(){
+      if ( viewer.curr >= ($items.length - 1) ) viewer.curr = -1;
+      viewer.next();
+    });
+
     var viewer = {
       curr: -1
 

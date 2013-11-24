@@ -27,10 +27,14 @@
     <script src="/js/init-login.js"></script>
 
     <script>
+      var isTouchDevice = function(){
+        return 'ontouchstart' in window;
+      };
+
       var config = {
         colorBoxOptions: {
           inline: true
-        , width: '50%'
+        , width: isTouchDevice() ? '100%' : '60%'
         , href: '#contact'
         }
 
@@ -227,7 +231,7 @@
       <div class="container">
         <h2 class="section-header">Contact Us</h2>
         <p class="lead">for objective, data-backed insights.</p>
-        <button class="btn btn-default btn-large" data-icon="mail">Send a Message</button>
+        <a href="#contact" class="btn btn-default btn-large" data-icon="mail">Send a Message</a>
       </div>
     </section>
 

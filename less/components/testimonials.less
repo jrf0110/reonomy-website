@@ -36,6 +36,12 @@
   color: @testimonial-color;
   text-align: left;
   font-weight: 300;
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      font-size: 1em;
+    }
+  }
 }
 
 .testimonial blockquote:before {
@@ -68,6 +74,12 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 24px;
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      display: block;
+      margin-left: 0;
+    }
+  }
 }
 
 .testimonial .author-name {

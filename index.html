@@ -30,12 +30,47 @@
     <script src="/js/init-login.js"></script>
 
     <script>
+      var isTouchDevice = function(){
+        return 'ontouchstart' in window;
+      };
+
       var config = {
         colorBoxOptions: {
           inline: true
-        , width: '50%'
+        , width: isTouchDevice() ? '100%' : '60%'
         , href: '#contact'
         }
+      };
+
+      var initScrollGallery = function( photoViewer ){
+        var $window = $(window);
+        var $el = $('.section-screenshots');
+        var scrollTop = $el.offset().top;
+        var scrollSize = 3000;
+        var numElements = $('.photo-viewer .photo-nav li').length;
+        var stepSize = scrollSize / numElements;
+        var curr = 0;
+
+        var controller = $.superscrollorama({
+          triggerAtCenter: false,
+          playoutAnimations: true
+        });
+
+        var onScroll = _.throttle( function( e ){
+          photoViewer.go( parseInt( ($window.scrollTop() - scrollTop) / stepSize ) );
+        }, 50 );
+
+        controller.pin( $el, scrollSize, {
+          offset: -50
+
+        , onPin: function(){
+            $window.scroll( onScroll );
+          }
+
+        , onUnpin: function(){
+            $window.off( 'scroll', onScroll );
+          }
+        });
       };
 
       $(function(){
@@ -54,6 +89,7 @@
 
         $('.navbar').navbar().start();
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
+
         var photoViewer = $('.photo-viewer').photoViewer({
           scrollMode: true
         });
@@ -73,36 +109,9 @@
 
         aboutRotator.start();
 
-        (function(){
-          var $window = $(window);
-          var $el = $('.section-screenshots');
-          var scrollTop = $el.offset().top;
-          var scrollSize = 3000;
-          var numElements = $('.photo-viewer .photo-nav li').length;
-          var stepSize = scrollSize / numElements;
-          var curr = 0;
-
-          var controller = $.superscrollorama({
-            triggerAtCenter: false,
-            playoutAnimations: true
-          });
-
-          var onScroll = _.throttle( function( e ){
-            photoViewer.go( parseInt( (window.scrollY - scrollTop) / stepSize ) );
-          }, 50 );
-
-          controller.pin( $el, scrollSize, {
-            offset: -50
-
-          , onPin: function(){
-              $window.scroll( onScroll );
-            }
-
-          , onUnpin: function(){
-              $window.off( 'scroll', onScroll );
-            }
-          });
-        })();
+        if ( !isTouchDevice() ){
+          initScrollGallery( photoViewer);
+        }
       });
     </script>
   </head>
@@ -328,7 +337,7 @@
       <div class="container">
         <h2 class="section-header">Contact Us</h2>
         <p class="lead">for objective, data-backed insights.</p>
-        <button class="btn btn-default btn-large" data-icon="mail">Send a Message</button>
+        <a href="#contact" class="btn btn-default btn-large" data-icon="mail">Send a Message</a>
       </div>
     </section>
 

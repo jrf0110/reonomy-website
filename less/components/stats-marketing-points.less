@@ -2,8 +2,9 @@
 // Stats Marketing Points //
 ////////////////////////////
 
-@color:         #3E3E3E;
-@point-padding: 50px 40px 100px;
+@color:                 #3E3E3E;
+@point-padding:         50px 40px 100px;
+@point-padding-mobile:  30px 40px 60px;
 
 .stats-marketing-points {
   #grid > .row();
@@ -12,6 +13,8 @@
 .stats-marketing-points > .point {
   #grid > .column(33%);
   padding: @point-padding;
+  border-right: 1px solid @color;
+  border-left: 1px solid @color;
 
   @media screen and (max-width: @breakpoint-desktop-sm) {
     & {
@@ -22,15 +25,7 @@
   @media screen and (max-width: @breakpoint-tablet) {
     & {
       width: 100%;
-    }
-  }
-}
-
-.stats-marketing-points > .point {
-  border-right: 1px solid @color;
-  border-left: 1px solid @color;
-  @media screen and (max-width: @breakpoint-tablet) {
-    & {
+      padding: @point-padding-mobile;
       border-right: none;
       border-left: none;
       border-top: 1px solid @color;
@@ -68,7 +63,14 @@
 
   @media screen and (max-width: @breakpoint-desktop-sm) {
     & {
-      margin-top: 60px;
+      margin-top: 30px;
+      font-size: 7em;
+    }
+  }
+
+  @media screen and (max-width: @breakpoint-mobile) {
+    & {
+      font-size: 6em;
     }
   }
 }
@@ -85,7 +87,7 @@
 
   @media screen and (max-width: @breakpoint-desktop-sm) {
     & {
-      margin-top: 60px;
+      margin-top: 40px;
     }
   }
 }

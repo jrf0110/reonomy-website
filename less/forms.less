@@ -39,3 +39,14 @@ input, textarea {
 .form-vertical .field-group .btn[type="submit"] {
   margin-left: @label-width + @btn-border-width-base;
 }
+
+@media screen and (max-width: @breakpoint-tablet) {
+  .form-vertical label {
+    display: block;
+    width: auto;
+  }
+
+  .form-vertical .field-group .btn[type="submit"] {
+    margin-left: 0;
+  }
+}
