@@ -12,19 +12,49 @@
 .stats-marketing-points > .point {
   #grid > .column(33%);
   padding: @point-padding;
+
+  @media screen and (max-width: @breakpoint-desktop-sm) {
+    & {
+      font-size: 0.8em;
+    }
+  }
+
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      width: 100%;
+    }
+  }
 }
 
 .stats-marketing-points > .point {
   border-right: 1px solid @color;
   border-left: 1px solid @color;
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      border-right: none;
+      border-left: none;
+      border-top: 1px solid @color;
+      border-bottom: 1px solid @color;
+    }
+  }
 }
 
 .stats-marketing-points > .point:first-child {
   border-left: none;
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      border-top: none;
+    }
+  }
 }
 
 .stats-marketing-points > .point:last-child {
   border-right: none;
+  @media screen and (max-width: @breakpoint-tablet) {
+    & {
+      border-bottom: none;
+    }
+  }
 }
 
 .stats-marketing-points .point-stat {
@@ -35,6 +65,12 @@
   margin: 0;
   margin-top: 80px;
   letter-spacing: 1.4px;
+
+  @media screen and (max-width: @breakpoint-desktop-sm) {
+    & {
+      margin-top: 60px;
+    }
+  }
 }
 
 .stats-marketing-points .point-stat .units {
@@ -46,4 +82,10 @@
   color: @color;
   letter-spacing: 1.4px;
   margin-top: 80px;
+
+  @media screen and (max-width: @breakpoint-desktop-sm) {
+    & {
+      margin-top: 60px;
+    }
+  }
 }
