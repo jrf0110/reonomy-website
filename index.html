@@ -18,6 +18,8 @@
     <![endif]-->
 
     <script src="/bower_components/jquery/jquery.js"></script>
+    <script src="/bower_components/superscrollorama/js/jquery.superscrollorama.js"></script>
+    <script src="/bower_components/superscrollorama/js/greensock/TweenLite.min.js"></script>
     <script src="/bower_components/jquery-waypoints/waypoints.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/colorbox/jquery.colorbox.js"></script>
@@ -52,7 +54,8 @@
 
         $('.navbar').navbar().start();
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
-        $('.photo-viewer').photoViewer({ scrollMode: false });
+        var photoViewer = $('.photo-viewer').photoViewer({ scrollMode: true });
+        // photoViewer.stop();
 
         var aboutRotator = $('.section-about article').activeInterval({
           interval: 5000
@@ -66,6 +69,37 @@
         });
 
         aboutRotator.start();
+
+        (function(){
+          var $window = $(window);
+          var $el = $('.section-screenshots');
+          var scrollTop = $el.offset().top;
+          var scrollSize = 3000;
+          var numElements = $('.photo-viewer .photo-nav li').length;
+          var stepSize = scrollSize / numElements;
+          var curr = 0;
+
+          var controller = $.superscrollorama({
+            triggerAtCenter: false,
+            playoutAnimations: true
+          });
+
+          var onScroll = _.throttle( function( e ){
+            photoViewer.go( parseInt( (window.scrollY - scrollTop) / stepSize ) );
+          }, 50 );
+
+          controller.pin( $el, scrollSize, {
+            offset: -50
+
+          , onPin: function(){
+              $window.scroll( onScroll );
+            }
+
+          , onUnpin: function(){
+              $window.off( 'scroll', onScroll );
+            }
+          });
+        })();
       });
     </script>
   </head>
@@ -128,22 +162,6 @@
       <div class="container">
         <h2>Reonomy Helps Cre Organizations Make Better Investment Decisions More Efficiently</h2>
         <p class="lead">Quantitative, data-backed insights allow for more secure decision making.</p>
-      </div>
-    </section>
-
-    <section class="page-section section-test">
-      <div class="container">
-        <h2 class="section-title">Just testing</h2>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
-        <p class="lead">Test test test</p>
       </div>
     </section>
 
