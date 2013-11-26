@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/ielt9.gen.css">
     <![endif]-->
 
+    <script src="/js/normalize.js"></script>
     <script src="/bower_components/jquery/jquery.js"></script>
     <script src="/bower_components/lodash/dist/lodash.js"></script>
     <script src="/bower_components/colorbox/jquery.colorbox.js"></script>
@@ -53,8 +54,7 @@
 
         // Remove leading/trailing slashes
         if ( hash[0] === '/' ) hash = hash.substring(1);
-        if ( hash.slice(-1) === '/' ) hash = hash.substring( 0, hash.length - 1 );
-
+        if ( hash.substring(-1) === '/' ) hash = hash.substring( 0, hash.length - 1 );
         if ( hash.indexOf('positions/') > -1 ){
           // Build positions array based on DOM
           var positions = [];
@@ -64,7 +64,8 @@
 
           hash = hash.split('/')[1].trim();
 
-          if ( positions.indexOf( hash ) > -1 ){
+          if ( _.indexOf( positions, hash ) > -1 ){
+
             openModalFromPosition(
               $('[data-position="' + hash + '"]').parents('.position').eq(0)
             );
@@ -94,8 +95,7 @@
         var modal = $position.reonomyModal({
           photo: '/img/harlan-photo-lg.jpg'
         , onClose: function(){
-            console.log("close");
-            if ( 'history' in window ){
+            if ( 'history' in window && 'pushState' in history ){
               history.pushState( '', document.title, window.location.pathname );
             } else {
               window.location.hash = "#_";

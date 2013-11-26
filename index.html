@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/ielt9.gen.css">
     <![endif]-->
 
+    <script src="/js/normalize.js"></script>
     <script src="/bower_components/jquery/jquery.js"></script>
     <script src="/bower_components/superscrollorama/js/jquery.superscrollorama.js"></script>
     <script src="/bower_components/superscrollorama/js/greensock/TweenLite.min.js"></script>
@@ -74,7 +75,6 @@
       };
 
       var showScreenshotHeader = function( i ){
-        console.log( 'showScreen', i)
         var $active = $([
           '.section-screenshots .section-header.active'
         , '.section-screenshots .section-header.active + .lead'

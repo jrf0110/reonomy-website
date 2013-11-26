@@ -104,7 +104,8 @@ module.exports = function( grunt ){
       build: {
         // TODO: get this dynamically with jsdom
         src: [
-          "bower_components/jquery/jquery.js"
+          "js/normalize.js"
+        , "bower_components/jquery/jquery.js"
         , "bower_components/superscrollorama/js/jquery.superscrollorama.js"
         , "bower_components/superscrollorama/js/greensock/TweenLite.min.js"
         , "bower_components/lodash/dist/lodash.js"
