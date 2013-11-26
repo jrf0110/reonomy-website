@@ -8,7 +8,7 @@
   },
   "author": "John Fawcett",
   "license": "BSD-2-Clause",
-  "devDependencies": {
+  "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-connect": "~0.5.0",
     "grunt-contrib-jshint": "~0.7.1",
@@ -20,13 +20,6 @@
     "grunt-contrib-uglify": "~0.2.7",
     "jsdom": "~0.3.4",
     "async": "~0.2.9"
-  },
-  "dependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-connect": "~0.5.0",
-    "grunt-contrib-jshint": "~0.7.1",
-    "grunt-contrib-less": "~0.8.1",
-    "grunt-contrib-watch": "~0.5.3"
   },
   "repository": {
     "type": "git",
