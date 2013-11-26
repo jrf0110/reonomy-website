@@ -33,7 +33,7 @@
     };
 
     options = $.extend( {}, defaults, options );
-console.log(options.interval)
+
     var interval = {
       curr: -1
 

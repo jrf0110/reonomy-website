@@ -90,7 +90,7 @@
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
 
         var photoViewer = $('.photo-viewer').photoViewer({
-          scrollMode: true
+          scrollMode: false
         });
 
         photoViewer.go(1);
@@ -136,7 +136,7 @@
         aboutNextRotator.start();
 
         if ( !isTouchDevice() ){
-          initScrollGallery( photoViewer);
+          // initScrollGallery( photoViewer);
         }
       });
     </script>
