@@ -3,8 +3,8 @@
 ////////////////////////////
 
 @color:                 #3E3E3E;
-@point-padding:         50px 40px 100px;
-@point-padding-mobile:  30px 40px 60px;
+@stats-point-padding:         50px 40px 100px;
+@stats-point-padding-mobile:  30px 40px 60px;
 
 .stats-marketing-points {
   #grid > .row();
@@ -12,7 +12,7 @@
 
 .stats-marketing-points > .point {
   #grid > .column(33%);
-  padding: @point-padding;
+  padding: @stats-point-padding;
   border-right: 1px solid @color;
   border-left: 1px solid @color;
 
@@ -25,7 +25,7 @@
   @media screen and (max-width: @breakpoint-tablet) {
     & {
       width: 100%;
-      padding: @point-padding-mobile;
+      padding: @stats-point-padding-mobile;
       border-right: none;
       border-left: none;
       border-top: 1px solid @color;
