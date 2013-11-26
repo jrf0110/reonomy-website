@@ -4,7 +4,7 @@
  * 
  * Usage:
  * 
- *  $('.my-sayings > li').activeRotate({
+ *  $('.my-sayings > li').activeInterval({
  *    interval: 3000
  *  }).start();
  *
@@ -29,12 +29,15 @@
     , className:  'active'
     , upNext:     'up-next'
     , onTickBefore: function( interval ){}
+    , onRotate:     function( $el, interval ){}
     };
 
     options = $.extend( {}, defaults, options );
-
+console.log(options.interval)
     var interval = {
       curr: -1
+
+    , options: options
 
     , $els: $this
 
@@ -59,6 +62,8 @@
 
         $this.eq( interval.curr ).addClass( options.className );
         $this.eq( (interval.curr + 1) % $this.length ).addClass( options.upNext );
+
+        options.onRotate( $this.eq( interval.curr ), interval );
       }
 
     , next: function(){

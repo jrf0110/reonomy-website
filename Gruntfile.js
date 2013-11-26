@@ -76,9 +76,9 @@ module.exports = function( grunt ){
   , copy: {
       build: {
         files: [
-          { expand: true, src: ['./css'], dest: './build' }
-        , { expand: true, src: ['./img'], dest: './build' }
-        , { expand: true, src: ['./font'], dest: './build' }
+          { expand: true, src: ['./css/*'], dest: './build' }
+        , { expand: true, src: ['./img/*'], dest: './build' }
+        , { expand: true, src: ['./font/*'], dest: './build' }
         , { expand: true, src: ['*.html'], dest: './build' }
         , { expand: true, src: ['./bower_components/colorbox/example1/*'], dest: './build' }
         , { expand: true, src: ['./bower_components/colorbox/example1/images/*'], dest: './build' }

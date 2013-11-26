@@ -94,9 +94,32 @@
         });
 
         photoViewer.go(1);
- 
+
+        // Populate about section next link elements
+        var $nextWrapper = $('.section-about .next-wrapper');
+        var $next = $('.section-about .next');
+
+        $('.section-about [data-keyword]').each( function(){
+          var $clone = $next.clone();
+          $clone.text( $(this).data('keyword') );
+          $nextWrapper.append( $clone );
+        });
+
+        $nextWrapper.css( 'height', $next[0].offsetHeight );
+        $next.remove();
+
+
         var aboutRotator = $('.section-about article').activeInterval({
-          interval: 5000
+          interval: 10000
+        });
+
+        var aboutNextRotator = $('.section-about .next').activeInterval({
+          inteval: aboutRotator.options.interval + 20000
+        , onRotate: function( $el ){
+            $nextWrapper.animate({
+              width: $el[0].offsetWidth
+            });
+          }
         });
 
         $('.section-about .next').click( function( e ){
@@ -104,9 +127,13 @@
           aboutRotator.stop();
           aboutRotator.next();
           aboutRotator.setTick();
+          aboutNextRotator.stop();
+          aboutNextRotator.next();
+          aboutNextRotator.setTick();
         });
 
         aboutRotator.start();
+        aboutNextRotator.start();
 
         if ( !isTouchDevice() ){
           initScrollGallery( photoViewer);
@@ -245,23 +272,24 @@
     </section>
 
     <section class="page-section section-about">
-      <article class="article">
-        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+      <h2 class="section-header">In this competitive market,
+        <div class="next-wrapper">
+          <a href="#" class="next">lenders</a>
+        </div>
+       need an advantage</h2>
+      <article class="article" data-keyword="lenders">
         <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
       </article>
 
-      <article class="article">
-        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+      <article class="article" data-keyword="word 2">
         <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
       </article>
 
-      <article class="article">
-        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+      <article class="article" data-keyword="word 3">
         <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
       </article>
 
-      <article class="article">
-        <h2 class="section-header">In this competitive market, <a href="#" class="next">lenders</a> need an advantage</h2>
+      <article class="article" data-keyword="word 4">
         <p class="section-content">Simplify your processes and ensure that all lending, risk and capital management decisions are data-backed by the best-in-class analytics. The most powerful deal sourcing and owner identification algorithms will help your team find and close deals.</p>
       </article>
       <div class="supporting-bg"></div>
@@ -272,17 +300,17 @@
         <!--<StatsMarketingPoints>-->
         <div class="stats-marketing-points">
           <article class="point">
-            <img src="/img/stats-marketing-point-sources.png" alt="" class="point-graphic">
+            <img src="/img/stats-marketing-point-sources.gif" alt="" class="point-graphic">
             <h3 class="point-stat">420 <div class="point-text">Sources</div></h3>
           </article>
         
           <article class="point">
-            <img src="/img/stats-marketing-point-validations.png" alt="" class="point-graphic">
+            <img src="/img/stats-marketing-point-validations.gif" alt="" class="point-graphic">
             <h3 class="point-stat">75 <div class="point-text">Validations</div></h3>
           </article>
         
           <article class="point">
-            <img src="/img/stats-marketing-point-datapoints.png" alt="" class="point-graphic">
+            <img src="/img/stats-marketing-point-datapoints.gif" alt="" class="point-graphic">
             <h3 class="point-stat">12<span class="units">bil</span> <div class="point-text">Datapoints</div></h3>
           </article>
         </div>

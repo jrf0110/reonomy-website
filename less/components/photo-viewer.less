@@ -84,7 +84,6 @@
   line-height: 12px;
 }
 
-.photo-viewer .photo-nav li.active,
 .photo-viewer .photo-nav li:hover {
   .sprite('triangle');
   width: @thumbnail-width + @indicator-size + @indicator-spacing;
@@ -97,7 +96,6 @@
   z-index: 2;
 }
 
-.photo-viewer .photo-nav li.active .photo-title,
 .photo-viewer .photo-nav li:hover .photo-title {
   margin-top: -62px;
 }
@@ -105,6 +103,10 @@
 .photo-viewer .photo-nav li.active:after,
 .photo-viewer .photo-nav li:hover:after {
   background-color: @indicator-bg-active;
+  margin-left: @indicator-spacing;
+}
+
+.photo-viewer .photo-nav li:hover:after {
   margin-left: @indicator-spacing;
 }
 
