@@ -19,6 +19,7 @@
       // that support the scrolling
     , pxInterval: 200
     , scrollMode: true
+    , onSlide: function( i, viewer ){}
     };
 
     options = $.extend( {}, defaults, options );
@@ -72,6 +73,8 @@
         viewer.clearCurrent();
         viewer.curr = index;
         viewer.setCurrent();
+
+        options.onSlide( viewer.curr, viewer );
       }
 
     , next: function(){

@@ -73,6 +73,27 @@
         });
       };
 
+      var showScreenshotHeader = function( i ){
+        console.log( 'showScreen', i)
+        var $active = $([
+          '.section-screenshots .section-header.active'
+        , '.section-screenshots .section-header.active + .lead'
+        ].join(', '));
+
+        $active.fadeOut( 300, function(){
+          $active.eq(0).removeClass('active');
+          $active.css( 'display', 'none' );
+
+          $active = $('.section-screenshots .section-header').eq( i );
+          $active.addClass('active');
+          $active = $active.add( $active.find('+ .lead') );
+
+          $active.css( 'display', 'block' );
+
+          $active.eq( i ).fadeIn( 300 );
+        });
+      };
+
       $(function(){
         $([
           '[href="#contact"]'
@@ -92,9 +113,10 @@
 
         var photoViewer = $('.photo-viewer').photoViewer({
           scrollMode: false
+        , onSlide: function( i, viewer ){
+            showScreenshotHeader( i );
+          }
         });
-
-        photoViewer.go(1);
 
         // Populate about section next link elements
         var $nextWrapper = $('.section-about .next-wrapper');
@@ -115,12 +137,7 @@
         });
 
         var aboutNextRotator = $('.section-about .next').activeInterval({
-          inteval: aboutRotator.options.interval + 20000
-        // , onRotate: function( $el ){
-        //     $nextWrapper.animate({
-        //       width: $el[0].offsetWidth
-        //     });
-        //   }
+          interval: aboutRotator.options.interval
         });
 
         $('.section-about .next').click( function( e ){
@@ -236,8 +253,25 @@
 
     <section class="page-section section-screenshots">
       <div class="container">
-        <h2 class="section-header">Your 30 Second Building Summary</h2>
-        <p class="lead">Quantitative, data-backed insights allow for more secure decision making.</p>
+        <div class="photo-headings">
+          <h2 class="section-header active">Your 30 Second Building Summary</h2>
+          <p class="lead">Quantitative, data-backed insights allow for more secure decision making.</p>
+
+          <h2 class="section-header">Another Header Here 2</h2>
+          <p class="lead">Some more quantitative, data-backed placeholder text 2.</p>
+
+          <h2 class="section-header">Another Header Here 3</h2>
+          <p class="lead">Some more quantitative, data-backed placeholder text 3.</p>
+
+          <h2 class="section-header">Another Header Here 4</h2>
+          <p class="lead">Some more quantitative, data-backed placeholder text 4.</p>
+
+          <h2 class="section-header">Another Header Here 5</h2>
+          <p class="lead">Some more quantitative, data-backed placeholder text 5.</p>
+
+          <h2 class="section-header">Another Header Here 6</h2>
+          <p class="lead">Some more quantitative, data-backed placeholder text 6.</p>
+        </div>
 
         <!--<PhotoViewer>-->
         <div class="photo-viewer">
