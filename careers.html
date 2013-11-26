@@ -23,7 +23,7 @@
 
     <script src="/js/components/component.active-interval.js"></script>
     <script src="/js/components/component.navbar.js"></script>
-    <script src="/js/components/component.photo-viewer.js"></script>
+    <script src="/js/components/component.reonomy-modal.js"></script>
     <script src="/js/init-login.js"></script>
 
     <script>
@@ -47,12 +47,6 @@
       var checkHash = function(){
         if ( !('hash' in window.location) ) return;
 
-        // Build positions array based on DOM
-        var positions = [];
-        $('[data-position]').each( function(){
-          positions.push( $(this).data('position') );
-        });
-
         // Check hash for matching position
         // If there's a match, open the modal
         var hash = window.location.hash.substring(1).trim();
@@ -61,9 +55,62 @@
         if ( hash[0] === '/' ) hash = hash.substring(1);
         if ( hash.slice(-1) === '/' ) hash = hash.substring( 0, hash.length - 1 );
 
-        if ( positions.indexOf( hash ) > -1 ){
-          openModal( 'Re: ' + positions[ positions.indexOf( hash ) ]);
+        if ( hash.indexOf('positions/') > -1 ){
+          // Build positions array based on DOM
+          var positions = [];
+          $('[data-position]').each( function(){
+            positions.push( $(this).data('position') );
+          });
+
+          hash = hash.split('/')[1].trim();
+
+          if ( positions.indexOf( hash ) > -1 ){
+            openModalFromPosition(
+              $('[data-position="' + hash + '"]').parents('.position').eq(0)
+            );
+          }
         }
+      };
+
+      var openModalFromPosition = function( $position ){
+        var positionKey = $position.find('.btn-more').attr('href');
+        positionKey = positionKey.substring(
+          positionKey.lastIndexOf('/')
+        ).trim();
+
+        var $apply = $([
+          '<a href="#" class="'
+        , 'btn btn-default btn-large btn-apply'
+        , '">Apply</a>'
+        ].join(''));
+
+        $position = $position.clone();
+        $position.find('.position-title').addClass('modal-title');
+        $position.find('.position-description').addClass('modal-body');
+        $position.find('.btn-more').remove();
+
+        $position.append( $apply );
+
+        var modal = $position.reonomyModal({
+          photo: '/img/harlan-photo-lg.jpg'
+        , onClose: function(){
+            console.log("close");
+            if ( 'history' in window ){
+              history.pushState( '', document.title, window.location.pathname );
+            } else {
+              window.location.hash = "#_";
+            }
+          }
+        });
+
+        _.defer(function(){
+          modal.open();
+
+          modal.$el.find('.btn-apply').click( function( e ){
+            e.preventDefault();
+            openModal('Re: ' + $position.find('.position-title').text().trim() );
+          });
+        });
       };
 
       $(function(){
@@ -85,6 +132,16 @@
         });
 
         $('.navbar').navbar().start();
+
+        $('.position .btn-more').click( function( e ){
+          // Prevent page from jumping to nowhere
+          e.preventDefault();
+
+          var $this = $(this);
+          window.location.hash = $this.attr('href');
+
+          openModalFromPosition( $this.parents('.position').eq(0) );
+        });
 
         checkHash();
       });
@@ -200,22 +257,22 @@
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
+            <a href="#/positions/data-scientist" data-position="data-scientist" class="btn btn-large btn-secondary btn-icon btn-more" data-icon="plus">More...</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
+            <a href="#/positions/data-scientist" data-position="data-scientist" class="btn btn-large btn-secondary btn-icon btn-more" data-icon="plus">More...</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
+            <a href="#/positions/data-scientist" data-position="data-scientist" class="btn btn-large btn-secondary btn-icon btn-more" data-icon="plus">More...</a>
           </div>
           <div class="position">
             <h4 class="position-title">Data Scientist</h4>
             <p class="position-description">You will research and engineer algorithms to provide insight into real estate markets and individual buildings. You will work with Reonomy's vast and ever-growing dataset to (re)define new industry KPIs and metrics. Data Science is at the heart of Reonomy's value proposition.</p>
-            <a href="#contact" class="btn btn-large btn-secondary btn-icon btn-apply" data-position="Data Scientist" data-icon="plus">Apply for position</a>
+            <a href="#/positions/data-scientist" data-position="data-scientist" class="btn btn-large btn-secondary btn-icon btn-more" data-icon="plus">More...</a>
           </div>
         </div>
         <!--</PositionsList>-->
