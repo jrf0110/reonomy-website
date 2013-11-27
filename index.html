@@ -41,15 +41,15 @@
         , width: isTouchDevice() ? '100%' : '60%'
         , href: '#contact'
         }
+      , scrollSize: 2000
       };
 
       var initScrollGallery = function( photoViewer ){
         var $window = $(window);
         var $el = $('.section-screenshots');
         var scrollTop = $el.offset().top;
-        var scrollSize = 3000;
         var numElements = $('.photo-viewer .photo-nav li').length;
-        var stepSize = scrollSize / numElements;
+        var stepSize = config.scrollSize / numElements;
         var curr = 0;
 
         var controller = $.superscrollorama({
@@ -61,7 +61,7 @@
           photoViewer.go( parseInt( ($window.scrollTop() - scrollTop) / stepSize ) );
         }, 50 );
 
-        controller.pin( $el, scrollSize, {
+        controller.pin( $el, config.scrollSize, {
           offset: -50
 
         , onPin: function(){
@@ -75,22 +75,18 @@
       };
 
       var showScreenshotHeader = function( i ){
-        var $active = $([
-          '.section-screenshots .section-header.active'
-        , '.section-screenshots .section-header.active + .lead'
-        ].join(', '));
+        var $heading = $('.photo-heading');
 
-        $active.fadeOut( 300, function(){
-          $active.eq(0).removeClass('active');
-          $active.css( 'display', 'none' );
+        $heading.fadeOut( 300, function(){
+          var $header = $('.section-screenshots .photo-headings .section-header').eq( i );
+          var $lead = $header.find('+ .lead');
 
-          $active = $('.section-screenshots .section-header').eq( i );
-          $active.addClass('active');
-          $active = $active.add( $active.find('+ .lead') );
+          $heading.html('');
 
-          $active.css( 'display', 'block' );
+          $heading.append( $header.clone() );
+          $heading.append( $lead.clone() );
 
-          $active.eq( i ).fadeIn( 300 );
+          $heading.fadeIn(300);
         });
       };
 
@@ -112,7 +108,7 @@
         $('.text-rotator li').activeInterval({ interval: 5000 }).start();
 
         var photoViewer = $('.photo-viewer').photoViewer({
-          scrollMode: false
+          scrollMode: true
         , onSlide: function( i, viewer ){
             showScreenshotHeader( i );
           }
@@ -154,7 +150,7 @@
         aboutNextRotator.start();
 
         if ( !isTouchDevice() ){
-          // initScrollGallery( photoViewer);
+          initScrollGallery( photoViewer);
         }
       });
     </script>
@@ -253,8 +249,9 @@
 
     <section class="page-section section-screenshots">
       <div class="container">
+        <div class="photo-heading"></div>
         <div class="photo-headings">
-          <h2 class="section-header active">Your 30 Second Building Summary</h2>
+          <h2 class="section-header">Your 30 Second Building Summary</h2>
           <p class="lead">Quantitative, data-backed insights allow for more secure decision making.</p>
 
           <h2 class="section-header">Another Header Here 2</h2>

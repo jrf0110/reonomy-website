@@ -113,6 +113,8 @@ module.exports = function( grunt ){
         , "js/components/component.active-interval.js"
         , "js/components/component.navbar.js"
         , "js/components/component.photo-viewer.js"
+        , "js/components/component.reonomy-modal.js"
+        , "js/components/component.employee-modal.js"
         , "js/init-login.js"
         ]
 

@@ -67,6 +67,7 @@
       }
 
     , go: function( index ){
+        if ( viewer.curr === index ) return;
         if ( index >= $items.length ) return;
         if ( index < 0 ) return;
 
@@ -110,9 +111,7 @@
     if ( !options.scrollMode ){
       viewer.start();
     } else {
-      // $this.waypoint( function(){
-      //   $this.addClass('')
-      // });
+      viewer.go(0);
     }
 
     return viewer;
