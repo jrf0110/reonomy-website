@@ -68,6 +68,7 @@
 
 .btn[data-icon]:after {
   .icon-font();
+  content: "";
   font-size: 22px;
   vertical-align: middle;
   margin-left: 14px;
@@ -111,6 +112,12 @@
 //   margin-left: 6px;
 // }
 
-.btn[data-icon="plus"]:after { content: "\f067"; }
-.btn[data-icon="laptop"]:after { content: "\f109"; }
-.btn[data-icon="mail"]:after { content: "\f003"; }
+// Old fontawesome stuff
+// .btn[data-icon="plus"]:after { content: "\f067"; }
+// .btn[data-icon="laptop"]:after { content: "\f109"; }
+// .btn[data-icon="mail"]:after { content: "\f003"; }
+
+.btn[data-icon="plus"]:after { .sprite('icon-plus') }
+.btn[data-icon="display-2"]:after { .sprite('icon-display-2') }
+.btn[data-icon="display-3"]:after { .sprite('icon-display-3') }
+.btn[data-icon="mail"]:after { .sprite('icon-mail'); margin-top: -4px }
