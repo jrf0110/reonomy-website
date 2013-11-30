@@ -1,0 +1,97 @@
+///////////////
+// Blog Post //
+///////////////
+
+@post-bg: #fff;
+@post-padding: 20px;
+@post-margin: @post-padding * 2;
+
+.blog-post {
+  padding: @post-padding;
+  margin: 0 @post-margin;
+  margin-bottom: 54px;
+  text-align: center;
+  font-size: 12px;
+  background: @post-bg;
+
+  @media screen and (max-width: @breakpoint-tablet){
+    & {
+      
+    }
+  }
+}
+
+.blog-post .post-title {
+  font-size: 3.5em;
+  color: @off-gray;
+}
+
+.blog-post .post-title > a {
+  color: @off-gray;
+}
+
+.blog-post .post-date-author {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 6px;
+
+  background: @post-bg;
+
+  font-family: @font-family-serif;
+  font-size: 1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: lighten( desaturate( @off-gray, 10% ), 20% );
+}
+
+// Clock icon
+.blog-post .post-date-author:before {
+  .sprite('icon-clock');
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 3px;
+  margin-bottom: 4px;
+}
+
+.blog-post .post-date-author + hr {
+  position: absolute;
+  z-index: 0;
+  display: table;
+  width: 100%;
+  margin-top: -34px;
+  border: none;
+  border-bottom: solid 1px #D1D1D1;
+}
+
+.blog-post .post-author {
+  display: inline-block;
+  margin-left: 12px;
+  text-transform: none;
+}
+
+.blog-post .post-content {
+  padding: 0 40px;
+  text-align: left;
+  font-size: 1em;
+  letter-spacing: 1.4px;
+  line-height: 1.6em;
+  color: @off-gray;
+}
+
+.blog-post .read-more-wrapper {
+  text-align: center;
+}
+
+.blog-post .read-more {
+  padding-top: 6px;
+  padding-bottom: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: @brand-primary;
+  font-size: .8em;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+}

@@ -1,0 +1,42 @@
+////////////////////
+// Blog Overrides //
+////////////////////
+
+// Main layout
+.page-blog {
+  .hero-unit h1 {
+    // TODO: derive this value from theme
+    color: #DBDBDB;
+  }
+
+  .main-container {
+    #grid > .row();
+    width: @container-width;
+    min-width: @container-width;
+    max-width: @container-width;
+    margin: 0 auto;
+    margin-top: 78px;
+  }
+
+  .main-container > .posts-wrapper {
+    #grid > .column(79%);
+    padding-right: @gutter-width;
+  }
+
+  .main-container > .nav-wrapper {
+    #grid > .column(21%);
+    padding-left: @gutter-width;
+  }
+
+  .cover-photo {
+    width: 100%;
+  }
+
+  .posts-wrapper {
+    line-height: 0;
+  }
+
+  .posts-wrapper > .posts {
+    line-height: @line-height-base;
+  }
+}

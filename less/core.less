@@ -37,8 +37,13 @@
 @import "components/reonomy-modal.less";
 @import "components/employee-modal.less";
 
+// Blog
+@import "components/blog-post.less";
+@import "components/blog-nav-module.less";
+
 // Overrides
 @import "component-site-overrides.less";
+@import "blog-overrides.less";
 
 html, body {
   background-color:     @body-bg-color;
@@ -61,6 +66,7 @@ a, span {
 
 a {
   text-decoration: none;
+  color: @primary-display;
   &:hover {
     text-decoration: underline;
   }

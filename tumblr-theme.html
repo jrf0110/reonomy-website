@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+  <head>
+    {MobileAppHeaders}
+    <meta charset="utf-8">
+    <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+    {block:Description}
+    <meta name="description" content="{MetaDescription}">
+    {/block:Description}
+
+    <meta name="text:Base URL" content="http://storage.j0.hn/storage"/>
+
+    <meta name="text:Base URL" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    
+    <!--[if lt IE 9]>
+    <script src="{text:Base URL}/bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="{text:Base URL}/bower_components/colorbox/example1/colorbox.css">
+    <link rel="stylesheet" href="{text:Base URL}/css/core.gen.css">
+
+    <script src="{text:Base URL}/js/bundle.js"></script>
+    <script>
+      (function(){
+        var config = window.config = window.config || {};
+
+        config.dateFormat = 'MMMM D YYYY';
+
+        config.tumblr = {
+          sidebarPostsCount: 10
+        , apiUrl: [
+            "http://"
+          , document.domain
+          , "/api/read/json"
+          ].join('')
+        };
+      })();
+
+      (function(){
+        var tumblr = window.tumblr = window.tumblr || {};
+
+        tumblr.getTextPosts = function( callback ){
+          var url = config.tumblr.apiUrl;
+
+          url += '?' + _.chain({
+            callback: '?'
+          , filter: 'text'
+          , num: config.tumblr.sidebarPostsCount
+          }).pairs().map( function( pair ){
+            return pair.join('=');
+          }).value().join('&');
+
+          $.getJSON( url, function( data ){
+            return callback( data.error, data.posts );
+          });
+        };
+
+        tumblr.getActiveMonths = function( callback ){
+          var months = [
+            'January'
+          , 'February'
+          , 'March'
+          , 'April'
+          , 'May'
+          , 'June'
+          , 'July'
+          , 'August'
+          , 'September'
+          , 'October'
+          , 'November'
+          , 'December'
+          ];
+
+          $.get( '/archive', function( response ){
+            var results = [];
+
+            $( $( '<div>' + response + '</div>' ).find('.date').get().reverse() ).each( function(){
+              var month = $( this ).text();
+
+              if ( month.indexOf(' ') === -1 ) return;
+
+              results.push({
+                date:   month
+              , month:  +months.indexOf( month.split(' ')[0] ) + 1
+              , year:   +month.split(' ')[1]
+              });
+            });
+
+            callback( null, results );
+          });
+        };
+      })();
+
+      (function(){
+        $.fn.sidebarPosts = function( options ){
+          var $this = this;
+
+          var defaults = {
+            template: _.template([
+              '<li>'
+            , '  <a href="<%= post.url %>"><%= post[\'regular-title\'] %></a>'
+            , '  <%= post.date %>'
+            , '</li>'
+            ].join('\n'))
+          };
+
+          options = $.extend( {}, defaults, options );
+
+          var plugin = {
+            fetch: function(){
+              tumblr.getTextPosts( function( error, posts ){
+                if ( error ) return;
+
+                plugin.render( posts );
+              });
+            }
+
+          , render: function( posts ){
+              var html = "";
+
+              for ( var i = 0, l = posts.length, p; i < l; ++i ){
+                p = _.clone( posts[i] );
+                p.date = moment( p.date ).format( config.dateFormat );
+
+                html += options.template({ post: p });
+              }
+
+              $this.html( html );
+            }
+          };
+
+          return plugin;
+        };
+      })();
+
+      (function(){
+        $.fn.monthlyArchive = function( options ){
+          var $this = this;
+
+          var defaults = {
+            template: _.template([
+              '<li>'
+            , '  <a href="/archive/<%= data.year %>/<%= data.month %>">'
+            , '    <%= data.date %>'
+            , '  </a>'
+            , '</li>'
+            ].join('\n'))
+          };
+          
+          options = $.extend( {}, defaults, options );
+
+          var plugin = {
+            fetch: function(){
+              tumblr.getActiveMonths( function( error, months ){
+                if ( error ) return;
+
+                plugin.render( months );
+              });
+            }
+
+          , render: function( months ){
+              var html = "";
+
+              for ( var i = 0, l = months.length; i < l; ++i ){
+                html += options.template({ data: months[i] });
+              }
+
+              $this.html( html );
+            }
+          };
+
+          return plugin;
+        };
+      })();
+
+      $(function(){
+        // Render post sidebar dilly dally
+        $('#recent-posts').sidebarPosts().fetch();
+        $('#monthly-archive').monthlyArchive().fetch();
+      });
+    </script>
+
+    <style>
+      /* Custom CSS */
+      {CustomCSS}
+    </style>
+  </head>
+  <body data-urlencoded-name="{URLEncodedName}" class="page-blog{select:Layout}{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{/block:SearchPage}">
+    <!--<Navbar>-->
+    <header class="navbar collapsed">
+      <div class="container">
+        <a href="/">
+          <img class="navbar-logo" src="{text:Base URL}/img/reonomy-logo.png" alt="Reonomy">
+        </a>
+
+        <ul class="nav">
+          <li><a href="{text:Base URL}/company.html">Company</a></li>
+          <li><a href="{text:Base URL}/careers.html">Careers</a></li>
+          <li class="active"><a href="/">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="http://reonomy.com">Login</a></li>
+          <li>
+            <button class="btn btn-tertiary btn-request-demo" data-icon="display-2">Request a Demo</button>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!--</Navbar>-->
+
+    <div class="hero-unit hero-unit-blog">
+      <div class="container">
+        <h1>Ideas On Paper</h1>
+      </div>
+    </div>
+
+    
+
+    <div class="main-container">
+      <div class="posts-wrapper">
+        <img class="cover-photo" src="{text:Base URL}/img/blog-cover-photo.jpg" alt="Reonomy">
+
+        <div class="posts">
+          {block:Posts}
+          <article class="blog-post">
+            {block:Text}
+              {block:Title}
+                <h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>
+              {/block:Title}
+              <h5 class="post-date-author">
+                {block:Date}
+                  <span class="post-date">{Month} {DayOfMonth}, {Year}</span>
+                {/block:Date}
+                <a class="post-author" href="{PostAuthorURL}">{PostAuthorName}</a>
+              </h5>
+              <hr>
+              {block:Body}
+              <div class="post-content">
+                {Body}
+
+                {block:More}
+                <div class="read-more-wrapper">
+                  <a href="{Permalink}" class="read-more btn btn-secondary">Read More</a>
+                </div>
+                {/block:More}
+              </div>
+              {/block:Body}
+            {/block:Text}
+
+            {block:Audio}
+            <div class="audio post-content">
+              <div class="player">
+                <div class="play-count">{lang:Played PlayCount times}</div>
+                {AudioPlayerBlack}        
+              </div>
+              
+              {block:Caption}
+              <div class="caption">
+                {Caption}
+              </div>
+              {/block:Caption}
+            </div> <!-- end .audio -->
+            {/block:Audio}
+            
+            {block:Chat}
+            <div class="chat post-content">        
+              {block:Title}<h2 class="post-title">{Title}</h2>{/block:Title}
+              
+              <ul>
+                {block:Lines}
+                <li class="{Alt}">
+                  {block:Label}<span class="who">{Label}</span>{/block:Label}
+                  {Line}
+                </li>
+                {/block:Lines}
+              </ul>
+            </div> <!-- end .chat -->
+            {/block:Chat}
+            
+            {block:Link}
+            <div class="link post-content">
+              <h3><a href="{URL}">{Name}</a></h3>
+              <div class="link-body">
+                {Description}
+              </div>
+            </div> <!-- end .link -->
+            {/block:Link}
+            
+            {block:Photo}
+            <div class="photo post-content">
+              <div class="image">
+                {LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+                {block:HighRes}<a href="{PhotoURL-HighRes}" class="hi-res">{lang:Click for high-res photo}</a>{/block:HighRes}
+              </div>
+              
+              {block:Caption}
+              <div class="caption">
+                {Caption}
+              </div>
+              {/block:Caption}
+            </div> <!-- end .photo -->
+            {/block:Photo}
+            
+            {block:Photoset}
+            <div class="photoset post-content">
+              <div class="set">
+                {Photoset-500}
+              </div>
+              
+              {block:Caption}
+              <div class="caption">
+                {Caption}
+              </div>
+              {/block:Caption}
+            </div>
+            {/block:Photoset}
+            
+            {block:Quote}
+            <div class="quote post-content">
+              <big>&ldquo;</big>
+              <div class="quote-words">{Quote}</div>
+              {block:Source}
+              <div class="source">
+                {Source}
+              </div>
+              {/block:Source}
+            </div> <!-- end .quote -->
+            {/block:Quote}
+
+            {block:Video}
+            <div class="video post-content">     
+              {Video-500}
+              
+              {block:Caption}
+              <div class="caption">
+                {Caption}
+              </div>
+              {/block:Caption}
+            </div> <!-- end .video -->
+            {/block:Video}
+            
+            {block:RebloggedFrom}
+            <span class="reblogged post-content">({lang:Reblogged from ReblogParentName 2})</span>
+            {/block:RebloggedFrom}
+          </article>
+          {/block:Posts}
+        </div>
+      </div>
+
+      <div class="nav-wrapper">
+        <div class="nav-module module-recent">
+          <h4 class="module-title">Recent Blog Posts</h4>
+          <ul id="recent-posts" class="module-list"></ul>
+        </div>
+
+        <div class="nav-module module-archive">
+          <h4 class="module-title">Archive</h4>
+          <ul id="monthly-archive" class="module-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!--<Footer>-->
+    <footer class="footer">
+      <div class="container">
+        <img class="footer-logo" src="{text:Base URL}/img/reonomy-logo.png" alt="Reonomy">
+
+        <ul class="nav">
+          <li><a href="company.html">Company</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="copyright">&copy; Reonomy 2013 all rights reserved</div>
+      </div>
+    </footer>
+    <!--</Footer>-->
+
+    <div id="modals">
+      <div id="contact">
+        <h2 class="modal-header">Contact</h2>
+        <form class="form-vertical">
+          <fieldset>
+            <div class="field-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name">
+            </div>
+            <div class="field-group">
+              <label for="contact-company">Company</label>
+              <input type="text" id="contact-company" name="company">
+            </div>
+            <div class="field-group">
+              <label for="contact-email">Email</label>
+              <input type="text" id="contact-email" name="email">
+            </div>
+            <div class="field-group">
+              <label for="contact-phone">Phone</label>
+              <input type="text" id="contact-phone" name="phone">
+            </div>
+            <div class="field-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject">
+            </div>
+            <div class="field-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message"></textarea>
+            </div>
+            <div class="field-group">
+              <button type="submit" class="btn btn-tertiary">Send</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    {block:IfGoogleAnalyticsID}
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '{text:Google Analytics ID}', 'tumblr.com');
+        ga('send', 'pageview');
+      </script>
+    {/block:IfGoogleAnalyticsID}
+  </body>
+</html>

@@ -22,6 +22,7 @@
     "html5shiv": "~3.7.0",
     "jquery-waypoints": "~2.0.3",
     "colorbox": "~1.4.33",
-    "superscrollorama": "~1.0.2"
+    "superscrollorama": "~1.0.2",
+    "moment": "~2.4.0"
   }
 }

@@ -2,6 +2,7 @@ var fs = require('fs');
 var async = require('async');
 var wrench = require('wrench');
 var jsdom = require('jsdom');
+var childProcess = require('child_process');
 
 module.exports = function( grunt ){
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -108,6 +109,7 @@ module.exports = function( grunt ){
         , "bower_components/jquery/jquery.js"
         , "bower_components/superscrollorama/js/jquery.superscrollorama.js"
         , "bower_components/superscrollorama/js/greensock/TweenLite.min.js"
+        , "bower_components/moment/moment.js"
         , "bower_components/lodash/dist/lodash.js"
         , "bower_components/colorbox/jquery.colorbox.js"
         , "js/components/component.active-interval.js"

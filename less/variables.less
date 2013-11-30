@@ -29,20 +29,29 @@
 , blue( @brand-primary )
 );
 
+// #33D29C
+// #5cc1a0
+
+@primary-display: rgb(
+  red( @brand-primary ) + 41
+, green( @brand-primary ) - 17
+, blue( @brand-primary ) + 4
+);
+
 // TODO: derive this value
 @off-gray-secondary: @off-gray;
 
-@body-bg-color:             #ffffff;
+@body-bg-color:             @off-white;
 
 
 // Type
 ////////////////////////////////////////////////////
-@font-family-serif:         'Soho';
-@font-family-sans-serif:    'Soho Gothic';
+@font-family-serif:         'Soho', Georgia, serif;
+@font-family-sans-serif:    'Soho Gothic', Helvetica, sans-serif;
 // For some reason, I'm not able to use soho gothic
 // font-weight: 300; font-style: italic
 // Only after creating a whole font family does it work
-@font-family-light:         'Soho Gothic Light';
+@font-family-light:         'Soho Gothic Light', Helvetica, sans-serif;
 
 @font-family-base:          @font-family-sans-serif;
 @font-weight-base:          300;
@@ -103,4 +112,4 @@
 
 // Misc
 ///////////////////////////////////////////////////
-@sprite-url:                '/img/sprite.png';
+@sprite-url:                '../img/sprite.png';
