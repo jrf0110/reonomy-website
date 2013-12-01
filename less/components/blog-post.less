@@ -95,3 +95,42 @@
   letter-spacing: 1.4px;
   font-weight: 700;
 }
+
+.blog-post .post-nav {
+  text-align: left;
+}
+
+.blog-post .post-nav a {
+  display: inline-block;
+  font-family: @font-family-serif;
+  text-transform: uppercase;
+  color: darken( @brand-secondary, 10% );
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blog-post .post-nav .prev {
+
+}
+
+.blog-post .post-nav .next {
+  float: right;
+}
+
+.blog-post .post-nav .prev:before,
+.blog-post .post-nav .next:after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
+.blog-post .post-nav .prev:before {
+  .sprite('icon-primary-arrow-left');
+  margin-right: 10px;
+}
+
+.blog-post .post-nav .next:after {
+  .sprite('icon-primary-arrow-right');
+  margin-left: 10px;
+}
