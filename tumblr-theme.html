@@ -7,14 +7,18 @@
   <head>
     {MobileAppHeaders}
     <meta charset="utf-8">
+
+    <link rel="icon" type="image/png" href="{text:Base URL}/img/favicon.png">
+
     <title>{Title}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
     {block:Description}
     <meta name="description" content="{MetaDescription}">
     {/block:Description}
 
-    <meta name="text:Base URL" content="http://storage.j0.hn/storage"/>
+    <meta name="text:Base URL" content="http://reonomy.com"/>
 
     <meta name="text:Base URL" content="">
+    <meta name="text:Google Analytics ID" content="">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,8 +35,18 @@
 
     <script src="{text:Base URL}/js/bundle.js"></script>
     <script>
+      var isTouchDevice = function(){
+        return 'ontouchstart' in window;
+      };
+
       (function(){
         var config = window.config = window.config || {};
+
+        config.colorBoxOptions = {
+          inline: true
+        , width: isTouchDevice() ? '100%' : '60%'
+        , href: '#contact'
+        };
 
         config.dateFormat = 'MMMM D YYYY';
 
@@ -84,6 +98,8 @@
           $.get( '/archive', function( response ){
             var results = [];
 
+            // Wrap the response, iterate .dates in reverse to
+            // push results in correct order
             $( $( '<div>' + response + '</div>' ).find('.date').get().reverse() ).each( function(){
               var month = $( this ).text();
 
@@ -184,9 +200,22 @@
       })();
 
       $(function(){
-        // Render post sidebar dilly dally
+        // Recent post and archive sidebar
         $('#recent-posts').sidebarPosts().fetch();
         $('#monthly-archive').monthlyArchive().fetch();
+
+        $([
+          '[href="#contact"]'
+        , '.btn-request-demo'
+        ].join(', ')).click( function( e ){
+          if ( $(this).hasClass('btn-request-demo') ){
+            $('#contact-subject').val('Request a Demo');
+          } else {
+            $('#contact-subject').val('');
+          }
+
+          $.colorbox( config.colorBoxOptions )
+        });
       });
     </script>
 
@@ -206,9 +235,9 @@
         <ul class="nav">
           <li><a href="{text:Base URL}/company.html">Company</a></li>
           <li><a href="{text:Base URL}/careers.html">Careers</a></li>
-          <li class="active"><a href="/">Blog</a></li>
+          <li><a href="/">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="http://reonomy.com">Login</a></li>
+          <li><a href="{text:Base URL}">Login</a></li>
           <li>
             <button class="btn btn-tertiary btn-request-demo" data-icon="display-2">Request a Demo</button>
           </li>
@@ -222,8 +251,6 @@
         <h1>Ideas On Paper</h1>
       </div>
     </div>
-
-    
 
     <div class="main-container">
       <div class="posts-wrapper">
