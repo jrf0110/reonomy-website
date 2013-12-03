@@ -20,6 +20,7 @@
   var prevListener;
 
   $.fn.navbar = function( options ){
+    var $window = $(window);
     var $this = this;
 
     var defaults = {
@@ -40,29 +41,31 @@
       isShowing: false
 
     , show: function(){
+        console.log("show!");
         $this.removeClass('hide-demo-btn');
         navbar.isShowing = true;
         return $this;
       }
 
     , hide: function(){
+        console.log("hide!");
         $this.addClass('hide-demo-btn');
         navbar.isShowing = false;
         return $this;
       }
 
     , start: function(){
-        $( window ).scroll( navbar._listener );
+        $window.scroll( navbar._listener );
         return $this;
       }
 
     , stop: function( listener ){
-        $( window ).off( listener || navbar._listener );
+        $window.off( listener || navbar._listener );
         return $this;
       }
 
     , _listener: _.throttle( function( e ){
-        if ( window.scrollY < options.showDemoAt ){
+        if ( $window.scrollTop() < options.showDemoAt ){
           if ( !navbar.isShowing ) return;
           navbar.hide();
         } else if ( !navbar.isShowing ){
