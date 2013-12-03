@@ -23,6 +23,7 @@
     "jquery-waypoints": "~2.0.3",
     "colorbox": "~1.4.33",
     "superscrollorama": "~1.0.2",
-    "moment": "~2.4.0"
+    "moment": "~2.4.0",
+    "jquery-html5-placeholder-shim": "*"
   }
 }

@@ -36,6 +36,7 @@ module.exports = function( grunt ){
         files: {
           "css/core.gen.css":          "less/core.less"
         , "css/ielt9.gen.css":         "less/ielt9.less"
+        , "css/ielte9.gen.css":        "less/ielte9.less"
         }
       }
     }
