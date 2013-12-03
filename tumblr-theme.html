@@ -107,7 +107,7 @@
 
               results.push({
                 date:   month
-              , month:  +months.indexOf( month.split(' ')[0] ) + 1
+              , month:  +_.indexOf( months, month.split(' ')[0] ) + 1
               , year:   +month.split(' ')[1]
               });
             });
